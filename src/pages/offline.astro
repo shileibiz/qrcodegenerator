@@ -1,0 +1,120 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const title = 'Offline QR Code Generator — Works Without Internet | QRMint';
+const description = 'Generate QR codes without an internet connection. Load the tool once, disconnect, and generate as many codes as you need. Perfect for factories, trade shows, and remote areas.';
+
+const canonical = new URL('/offline/', Astro.site).href;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Offline QR Code Generator — QRMint',
+  url: canonical,
+  applicationCategory: 'MultimediaApplication',
+  operatingSystem: 'Any (Web Browser)',
+  description,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+};
+
+const comparisons = [
+  { tool: 'QRMint (this)', online: 'Not needed', install: 'None (open in browser)', signup: 'None', limits: 'None' },
+  { tool: 'Bitly', online: 'Required', install: 'None (web app)', signup: 'Required', limits: '500/mo free' },
+  { tool: 'QR Code Monkey', online: 'Required', install: 'None (web app)', signup: 'Not required', limits: 'No daily limit' },
+  { tool: 'Adobe Express QR', online: 'Required', install: 'None (web app)', signup: 'Required', limits: 'Branded QR (paid)' },
+];
+---
+
+<Layout title={title} description={description} canonical={canonical} jsonLd={jsonLd}>
+  <Header />
+  <main class="mx-auto max-w-5xl px-4 py-10">
+    <section class="text-center">
+      <h1 class="text-3xl font-extrabold text-slate-900 sm:text-4xl">No Internet? No Problem.</h1>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-slate-600">
+        Load the QR tool once while you have a connection. Disconnect. Generate codes offline. 
+        Every QR code is created right in your browser — no server required, not even for the first load.
+      </p>
+    </section>
+
+    <section class="mt-10 rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+      <h2 class="text-xl font-bold text-slate-900">How to Use QR Codes Offline</h2>
+      <ol class="mt-4 list-inside list-decimal space-y-2 text-slate-700">
+        <li>Visit the <a href="/" class="text-brand-600 underline">homepage</a> while connected to the internet</li>
+        <li>Let the page fully load (all assets are cached by your browser)</li>
+        <li>Disconnect from the internet (airplane mode works)</li>
+        <li>Generate QR codes normally — everything runs locally</li>
+        <li>Download your QR codes as PNG or SVG</li>
+      </ol>
+      <p class="mt-4 text-sm text-slate-500">A PWA version with full offline support is coming soon.</p>
+    </section>
+
+    <section class="mt-10">
+      <h2 class="text-2xl font-bold text-slate-900">Offline QR: Comparison</h2>
+      <div class="mt-4 overflow-x-auto rounded-xl border border-slate-200">
+        <table class="w-full text-left text-sm">
+          <thead class="bg-slate-50">
+            <tr>
+              <th class="px-4 py-3 font-semibold text-slate-700">Tool</th>
+              <th class="px-4 py-3 font-semibold text-slate-700">Offline?</th>
+              <th class="px-4 py-3 font-semibold text-slate-700">Install</th>
+              <th class="px-4 py-3 font-semibold text-slate-700">Sign-up</th>
+              <th class="px-4 py-3 font-semibold text-slate-700">Limits</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100">
+            {comparisons.map((row) => (
+              <tr>
+                <td class="px-4 py-3 font-medium text-slate-800">{row.tool}</td>
+                <td class="px-4 py-3">{row.online === 'Not needed' ? <span class="text-green-600">Yes ✓</span> : <span class="text-slate-600">No</span>}</td>
+                <td class="px-4 py-3 text-slate-600">{row.install}</td>
+                <td class="px-4 py-3">{row.signup === 'None' ? <span class="text-green-600">None ✓</span> : <span class="text-slate-600">{row.signup}</span>}</td>
+                <td class="px-4 py-3 text-slate-600">{row.limits}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="mt-12 space-y-4">
+      <h2 class="text-2xl font-bold text-slate-900">Good For</h2>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <div class="rounded-xl border border-slate-200 p-4 text-sm text-slate-600">
+          <span class="font-semibold text-slate-800">🏭 Factory floors</span><br />
+          Generate labels for parts and equipment where there is no Wi-Fi or cellular signal.
+        </div>
+        <div class="rounded-xl border border-slate-200 p-4 text-sm text-slate-600">
+          <span class="font-semibold text-slate-800">🎪 Trade shows & events</span><br />
+          Create badges, booth signs, and handout codes on-site without relying on venue internet.
+        </div>
+        <div class="rounded-xl border border-slate-200 p-4 text-sm text-slate-600">
+          <span class="font-semibold text-slate-800">🌍 Remote areas</span><br />
+          Field workers in areas with spotty coverage can still generate and print codes.
+        </div>
+        <div class="rounded-xl border border-slate-200 p-4 text-sm text-slate-600">
+          <span class="font-semibold text-slate-800">🔒 Secure environments</span><br />
+          Air-gapped machines and classified areas where internet access is restricted.
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-12 space-y-4">
+      <h2 class="text-2xl font-bold text-slate-900">FAQ</h2>
+      <details class="rounded-xl border border-slate-200 p-4">
+        <summary class="cursor-pointer font-medium text-slate-800">Does the page really work without internet?</summary>
+        <p class="mt-2 text-sm text-slate-600">Yes. Once the page loads, the QR code generation library (qrcode.js) runs entirely in your browser. No AJAX calls, no API requests, no server-side rendering. You can disconnect immediately after the first load.</p>
+      </details>
+      <details class="rounded-xl border border-slate-200 p-4">
+        <summary class="cursor-pointer font-medium text-slate-800">Can I install this as an app?</summary>
+        <p class="mt-2 text-sm text-slate-600">We are working on a PWA (Progressive Web App) version that will support full offline install. For now, bookmark the page and it will work from cache after the first visit.</p>
+      </details>
+      <details class="rounded-xl border border-slate-200 p-4">
+        <summary class="cursor-pointer font-medium text-slate-800">Will the download feature work offline?</summary>
+        <p class="mt-2 text-sm text-slate-600">Yes. PNG and SVG downloads use browser-native APIs (canvas.toBlob and Blob URLs) that work offline. No server needed.</p>
+      </details>
+    </section>
+  </main>
+  <Footer />
+</Layout>

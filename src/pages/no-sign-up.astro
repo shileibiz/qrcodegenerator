@@ -1,0 +1,95 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const title = 'QR Code Generator No Sign Up — Free, Instant, Private | QRMint';
+const description = 'Generate QR codes with zero sign-up, zero tracking, zero emails. Your data stays in your browser. Free, instant, and private.';
+
+const canonical = new URL('/no-sign-up/', Astro.site).href;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'QR Code Generator No Sign Up — QRMint',
+  url: canonical,
+  applicationCategory: 'MultimediaApplication',
+  operatingSystem: 'Any (Web Browser)',
+  description,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+};
+
+const comparisons = [
+  { tool: 'QRMint (this)', signup: 'None', tracking: 'None', expiration: 'Never', price: 'Free' },
+  { tool: 'Bitly', signup: 'Required', tracking: 'Yes', expiration: '12 mo', price: 'Free tier + $8/mo' },
+  { tool: 'qr-code-generator.com', signup: 'Required', tracking: 'Yes', expiration: '6 mo', price: 'Free tier + $9/mo' },
+  { tool: 'QR.io', signup: 'Required', tracking: 'Yes', expiration: '12 mo', price: 'Free tier + $7/mo' },
+];
+---
+
+<Layout title={title} description={description} canonical={canonical} jsonLd={jsonLd}>
+  <Header />
+  <main class="mx-auto max-w-5xl px-4 py-10">
+    <section class="text-center">
+      <h1 class="text-3xl font-extrabold text-slate-900 sm:text-4xl">No Sign-Up. Just a QR Code.</h1>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-slate-600">
+        Type your text or URL, click generate, and you are done. No account, no email, no marketing spam, no hidden limits. 
+        Your data lives in your browser and never touches a server.
+      </p>
+    </section>
+
+    <section class="mt-10">
+      <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+        <p class="text-center text-slate-700">
+          Use the <a href="/" class="font-semibold text-brand-600 underline">QR tool on the homepage</a> — 
+          it works the same with or without this page. There is no special sign-up gate.
+        </p>
+      </div>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold text-slate-900">How Other QR Tools Compare</h2>
+      <div class="mt-4 overflow-x-auto rounded-xl border border-slate-200">
+        <table class="w-full text-left text-sm">
+          <thead class="bg-slate-50">
+            <tr>
+              <th class="px-4 py-3 font-semibold text-slate-700">Tool</th>
+              <th class="px-4 py-3 font-semibold text-slate-700">Sign-up</th>
+              <th class="px-4 py-3 font-semibold text-slate-700">Tracking</th>
+              <th class="px-4 py-3 font-semibold text-slate-700">Expiration</th>
+              <th class="px-4 py-3 font-semibold text-slate-700">Price</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100">
+            {comparisons.map((row) => (
+              <tr>
+                <td class="px-4 py-3 font-medium text-slate-800">{row.tool}</td>
+                <td class="px-4 py-3">{row.signup === 'None' ? <span class="text-green-600">None ✓</span> : <span class="text-slate-600">{row.signup}</span>}</td>
+                <td class="px-4 py-3">{row.tracking === 'None' ? <span class="text-green-600">None ✓</span> : <span class="text-slate-600">{row.tracking}</span>}</td>
+                <td class="px-4 py-3">{row.expiration === 'Never' ? <span class="text-green-600">Never ✓</span> : <span class="text-slate-600">{row.expiration}</span>}</td>
+                <td class="px-4 py-3 text-slate-600">{row.price}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="mt-12 space-y-4">
+      <h2 class="text-2xl font-bold text-slate-900">FAQ</h2>
+      <details class="rounded-xl border border-slate-200 p-4">
+        <summary class="cursor-pointer font-medium text-slate-800">Why do most QR tools require sign-up?</summary>
+        <p class="mt-2 text-sm text-slate-600">Because they host your QR code data on their servers (dynamic QR). Sign-up lets them track scans, sell analytics, and eventually charge you. Static QR codes encode everything in the image itself — no server, no account needed.</p>
+      </details>
+      <details class="rounded-xl border border-slate-200 p-4">
+        <summary class="cursor-pointer font-medium text-slate-800">Can I use this for commercial QR codes without signing up?</summary>
+        <p class="mt-2 text-sm text-slate-600">Yes. There are no commercial restrictions. Generate as many codes as you need for business cards, flyers, menus, or packaging.</p>
+      </details>
+      <details class="rounded-xl border border-slate-200 p-4">
+        <summary class="cursor-pointer font-medium text-slate-800">What happens to my data?</summary>
+        <p class="mt-2 text-sm text-slate-600">Nothing. The QR code is generated in your browser. No text, URL, or data is sent anywhere. Close the page and everything disappears.</p>
+      </details>
+    </section>
+  </main>
+  <Footer />
+</Layout>

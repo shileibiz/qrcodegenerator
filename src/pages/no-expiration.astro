@@ -1,0 +1,89 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const title = 'Free QR Codes That Never Expire — Static vs Dynamic | QRMint';
+const description = 'Most free QR codes expire. Ours do not. Here is why: static QR codes encode all data in the image itself. No server, no expiration, forever.';
+
+const canonical = new URL('/no-expiration/', Astro.site).href;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'QR Codes That Never Expire — QRMint',
+  url: canonical,
+  applicationCategory: 'MultimediaApplication',
+  operatingSystem: 'Any (Web Browser)',
+  description,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+};
+
+const comparisons = [
+  { type: 'Static QR (ours)', how: 'Data encoded in the image', expires: 'Never', editable: 'No (re-generate)', tracking: 'No', cost: 'Free forever' },
+  { type: 'Dynamic QR', how: 'Data stored on a server', expires: 'Yes (usually 6-12mo)', editable: 'Yes', tracking: 'Yes', cost: 'Free tier, then $7-9/mo' },
+];
+---
+
+<Layout title={title} description={description} canonical={canonical} jsonLd={jsonLd}>
+  <Header />
+  <main class="mx-auto max-w-5xl px-4 py-10">
+    <section class="text-center">
+      <h1 class="text-3xl font-extrabold text-slate-900 sm:text-4xl">Your QR Code Stops Working? Ours Do Not.</h1>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-slate-600">
+        If you have ever printed a QR code from a free tool only to find it dead six months later, 
+        you have been bitten by the dynamic QR trap. Here is how to spot it — and how ours works differently.
+      </p>
+    </section>
+
+    <section class="mt-10 rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+      <h2 class="text-xl font-bold text-slate-900">Static vs Dynamic QR Codes</h2>
+      <div class="mt-4 overflow-x-auto">
+        <table class="w-full text-left text-sm">
+          <thead class="bg-slate-50">
+            <tr>
+              <th class="px-4 py-3 font-semibold text-slate-700"></th>
+              <th class="px-4 py-3 font-semibold text-green-700">Static QR (ours)</th>
+              <th class="px-4 py-3 font-semibold text-slate-700">Dynamic QR (most tools)</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100">
+            {comparisons.map((row) => (
+              <tr>
+                <td class="px-4 py-3 font-medium text-slate-800">{row.type}</td>
+                <td class="px-4 py-3 text-green-700">{row.how}</td>
+                <td class="px-4 py-3 text-slate-600">{row.how}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-4 text-xs text-slate-400">
+        With a static QR, the data is in the image. Print it on a billboard in 2026 and someone scanning it in 2050 will still see the same content.
+      </p>
+    </section>
+
+    <section class="mt-12 space-y-4">
+      <h2 class="text-2xl font-bold text-slate-900">Why Most Free QR Codes Expire</h2>
+      <p class="text-slate-600">Dynamic QR codes store your URL on the provider's server. When you scan the code, it redirects to the real URL. The provider tracks every scan and charges you once you pass a certain volume or time. If you stop paying, the redirect breaks and your QR code points to nothing.<br /><br />Static QR codes work like a barcode on a cereal box. The URL is literally part of the black-and-white pattern. Nothing to expire, nothing to maintain, nothing to pay.</p>
+      <p class="text-sm font-medium text-slate-700">Go to the <a href="/" class="text-brand-600 underline">homepage tool</a> — every QR it generates is static and permanent.</p>
+    </section>
+
+    <section class="mt-12 space-y-4">
+      <h2 class="text-2xl font-bold text-slate-900">FAQ</h2>
+      <details class="rounded-xl border border-slate-200 p-4">
+        <summary class="cursor-pointer font-medium text-slate-800">How can I tell if a QR code is static or dynamic?</summary>
+        <p class="mt-2 text-sm text-slate-600">Hard to tell by looking. But if a free tool asks you to create an account, it is almost certainly dynamic. If it shows you scan analytics, it is dynamic. If it says your code will "expire" unless you upgrade, it is dynamic.</p>
+      </details>
+      <details class="rounded-xl border border-slate-200 p-4">
+        <summary class="cursor-pointer font-medium text-slate-800">Can I update a static QR code after printing it?</summary>
+        <p class="mt-2 text-sm text-slate-600">No — that is the trade-off. Static codes cannot be edited. If your URL changes, you need a new code. For printed materials that do not change often (business cards, menus, product labels), this is rarely an issue. If you need editing, you need a dynamic code (and a paid tool).</p>
+      </details>
+      <details class="rounded-xl border border-slate-200 p-4">
+        <summary class="cursor-pointer font-medium text-slate-800">Do you offer dynamic codes as a premium feature?</summary>
+        <p class="mt-2 text-sm text-slate-600">Not yet. For now we focus on making static QR generation as fast and private as possible. Premium dynamic codes (editable, trackable) are on the roadmap.</p>
+      </details>
+    </section>
+  </main>
+  <Footer />
+</Layout>
