@@ -15,6 +15,7 @@ export interface Props {
   bullets: string[];
   steps: string[];
   faqs: { q: string; a: string }[];
+  hreflangs?: { lang: string; href: string }[];
 }
 
 const {
@@ -27,11 +28,12 @@ const {
   bullets,
   steps,
   faqs,
+  hreflangs,
 } = Astro.props;
 
 const canonical = new URL(`/uses/${slug}/`, Astro.site).href;
 
-const hreflangs = [
+const pageHreflangs = hreflangs ?? [
   { lang: 'en', href: canonical },
   { lang: 'x-default', href: canonical },
 ];
@@ -77,7 +79,7 @@ const jsonLd = [
   title={title}
   description={description}
   canonical={canonical}
-  hreflangs={hreflangs}
+  hreflangs={pageHreflangs}
   jsonLd={jsonLd}
 >
   <Header />

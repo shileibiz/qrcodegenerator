@@ -1,0 +1,148 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import QrTool from '../../components/QrTool.astro';
+import PremiumCta from '../../components/PremiumCta.astro';
+
+const title = 'Pembuat Kode QR Gratis — Tanpa Daftar | QRMint';
+const description =
+  'Buat kode QR gratis, tanpa kedaluwarsa, tanpa daftar, tanpa tanda air. Kode statis: kontennya tersimpan langsung di gambar, bukan di server yang bisa mati kapan saja.';
+
+const slug = 'qr-code-indonesian';
+const canonical = new URL(`/languages/${slug}/`, Astro.site).href;
+const englishUrl = new URL('/uses/free-qr-code/', Astro.site).href;
+
+const hreflangs = [
+  { lang: 'en', href: englishUrl },
+  { lang: 'x-default', href: englishUrl },
+  { lang: 'id', href: canonical },
+];
+
+const steps = [
+  'Pilih yang mau dikodekan: URL, teks biasa, jaringan WiFi, atau kartu kontak vCard.',
+  'Sesuaikan dengan logo dan warna kalau mau — semua gratis, tanpa tanda air.',
+  'Unduh sebagai PNG atau SVG. Selesai. Tidak ada akun, jadi tidak ada yang bisa kedaluwarsa atau dimatikan.',
+];
+
+const bullets = [
+  '⚠️ Jebakan "gratis": generator seperti QR Code Generator Pro dan Beaconstac memberi kamu kode dinamis yang jalan lewat server mereka. Begitu berhenti bayar, semua kode yang sudah kamu cetak berhenti berfungsi.',
+  '♾️ Kode statis aman: URL atau teks dikodekan langsung ke dalam piksel. Setelah diunduh, tidak ada perusahaan — termasuk kami — yang bisa mematikannya.',
+  '🆓 Gratis beneran artinya: tanpa daftar, tanpa tanda air, tanpa batas pindai, tanpa paywall resolusi, tanpa kedaluwarsa. Itu paket gratis kami, selamanya.',
+  '📊 Kalau kamu BUTUH yang dinamis: kalau ingin mengubah tujuan setelah dicetak atau menghitung jumlah pindai, itu memang perlu server — itu paket Premium kami, dengan harga yang jujur.',
+];
+
+const faqs = [
+  {
+    q: 'Apa bedanya kode QR statis dan dinamis?',
+    a: 'Kode statis menyimpan konten langsung di gambar dan berfungsi selamanya tanpa perlu server. Kode dinamis menyimpan URL pendek milik penyedia — kamu bisa mengubah tujuan dan melihat statistik pindai, tapi kodenya mati kalau penyedia atau langganan kamu berhenti.',
+  },
+  {
+    q: 'Kenapa kode QR dari generator "gratis" lain bisa berhenti berfungsi?',
+    a: 'Karena mereka diam-diam memberi kamu kode dinamis yang terikat ke akun percobaan. Begitu masa percobaan habis, server pengarah menolak pindaian. Materi cetak kamu jadi mubazir, kecuali kamu bayar.',
+  },
+  {
+    q: 'Apakah ada batas pemindaian untuk kode gratis?',
+    a: 'Tidak. Kode statis tidak menyentuh server kami sama sekali, jadi tidak ada yang bisa dibatasi. Sejuta pindaian tidak ada biaya buat kami dan juga buat kamu.',
+  },
+  {
+    q: 'Apa saya perlu akun untuk mengunduh kode QR?',
+    a: 'Tidak perlu. Tanpa akun, tanpa email, tanpa cookie. Buat dan unduh — seluruh alat berjalan di browser kamu.',
+  },
+  {
+    q: 'Bagaimana kalian menghasilkan uang kalau generatornya gratis?',
+    a: 'Dari kode dinamis Premium. Kalau kamu perlu mengubah tujuan atau melihat analytics pindaian, fitur itu butuh infrastruktur sungguhan, dan itu yang kami kenakan biaya. Kode statis tetap gratis selamanya.',
+  },
+];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: 'Pembuat Kode QR Gratis — QRMint',
+    url: canonical,
+    applicationCategory: 'UtilitiesApplication',
+    operatingSystem: 'Any (Web Browser)',
+    description,
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'Pembuat Kode QR Gratis',
+    step: steps.map((text, i) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      text,
+    })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+];
+---
+
+<Layout
+  title={title}
+  description={description}
+  canonical={canonical}
+  hreflangs={hreflangs}
+  jsonLd={jsonLd}
+>
+  <Header />
+  <main class="mx-auto max-w-5xl px-4 py-10">
+    <section class="text-center">
+      <h1 class="text-3xl font-extrabold text-slate-900 sm:text-4xl">Pembuat Kode QR Gratis</h1>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-slate-600">{description}</p>
+    </section>
+
+    <div class="mt-8">
+      <QrTool defaultTab="url" />
+    </div>
+
+    <section class="mt-16">
+      <h2 class="text-2xl font-bold text-slate-900">Cara kerjanya</h2>
+      <ol class="mt-6 grid gap-4 sm:grid-cols-3">
+        {steps.map((step, i) => (
+          <li class="rounded-xl border border-slate-200 p-4 text-sm text-slate-600">
+            <span class="mb-2 inline-flex h-7 w-7 items-center justify-center rounded-full bg-brand-600 text-sm font-bold text-white">
+              {i + 1}
+            </span>
+            <p class="mt-2">{step}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="mt-16 grid gap-6 sm:grid-cols-2">
+      {bullets.map((b) => (
+        <div class="rounded-xl border border-slate-200 p-4 text-sm text-slate-600">{b}</div>
+      ))}
+    </section>
+
+    <section class="mt-16">
+      <h2 class="text-2xl font-bold text-slate-900">Pertanyaan yang sering diajukan</h2>
+      <div class="mt-6 space-y-4">
+        {faqs.map((item) => (
+          <details class="rounded-xl border border-slate-200 p-4">
+            <summary class="cursor-pointer font-medium text-slate-800">{item.q}</summary>
+            <p class="mt-2 text-sm text-slate-600">{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <PremiumCta />
+  </main>
+  <Footer />
+</Layout>

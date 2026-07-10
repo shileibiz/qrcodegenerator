@@ -1,0 +1,148 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import QrTool from '../../components/QrTool.astro';
+import PremiumCta from '../../components/PremiumCta.astro';
+
+const title = 'Gerador de QR Code Grátis — Sem Cadastro | QRMint';
+const description =
+  'Gere QR codes grátis, sem data de validade, sem cadastro e sem marca d\'água. Códigos estáticos: o conteúdo fica gravado direto na imagem, não num servidor que pode ser desligado.';
+
+const slug = 'qr-code-portuguese';
+const canonical = new URL(`/languages/${slug}/`, Astro.site).href;
+const englishUrl = new URL('/uses/free-qr-code/', Astro.site).href;
+
+const hreflangs = [
+  { lang: 'en', href: englishUrl },
+  { lang: 'x-default', href: englishUrl },
+  { lang: 'pt', href: canonical },
+];
+
+const steps = [
+  'Escolha o que codificar: uma URL, texto simples, rede WiFi ou um cartão de contato vCard.',
+  'Personalize com logo e cores se quiser — tudo grátis, sem marca d\'água.',
+  'Baixe como PNG ou SVG. Pronto. Não tem conta, então não tem nada que possa expirar ou ser desativado.',
+];
+
+const bullets = [
+  '⚠️ A armadilha do "grátis": geradores como QR Code Generator Pro e Beaconstac te dão códigos dinâmicos que passam pelos servidores deles. Pare de pagar e todos os códigos que você imprimiu param de funcionar.',
+  '♾️ Códigos estáticos não têm pegadinha: a URL ou o texto é codificado direto nos pixels. Depois de baixado, nenhuma empresa — nem a gente — consegue desligar.',
+  '🆓 Grátis de verdade significa: sem cadastro, sem marca d\'água, sem limite de escaneamentos, sem paywall de resolução, sem data de validade. Esse é nosso plano gratuito, permanentemente.',
+  '📊 Quando você PRECISA de um dinâmico: se quiser mudar o destino depois de imprimir ou contar escaneamentos, isso realmente precisa de um servidor — esse é nosso plano Premium, com preço honesto.',
+];
+
+const faqs = [
+  {
+    q: 'Qual a diferença entre QR code estático e dinâmico?',
+    a: 'Um código estático codifica o conteúdo direto na imagem e funciona para sempre, sem depender de servidor nenhum. Um código dinâmico codifica uma URL curta de redirecionamento que pertence ao provedor — você pode editar o destino e ver estatísticas, mas o código morre se o provedor ou sua assinatura caducar.',
+  },
+  {
+    q: 'Por que QR codes de outros geradores "grátis" param de funcionar?',
+    a: 'Porque eles te dão um código dinâmico silenciosamente, atrelado a uma conta de teste. Quando o teste acaba, o servidor de redirecionamento rejeita os escaneamentos. Seu material impresso vai para o lixo a menos que você pague.',
+  },
+  {
+    q: 'Tem limite de escaneamentos nos códigos gratuitos?',
+    a: 'Não. Códigos estáticos não passam pelos nossos servidores, então não tem nada para limitar. Um milhão de escaneamentos não custa nada pra gente e nem pra você.',
+  },
+  {
+    q: 'Preciso de uma conta para baixar meu QR code?',
+    a: 'Não. Sem conta, sem email, sem cookie wall. Gere e baixe — a ferramenta inteira roda no seu navegador. Ponto.',
+  },
+  {
+    q: 'Como vocês ganham dinheiro se o gerador é grátis?',
+    a: 'Com códigos dinâmicos Premium. Se você precisa editar destinos ou ver analytics de escaneamento, essas funções exigem infraestrutura de verdade, e é isso que cobramos. Os códigos estáticos continuam gratuitos para sempre.',
+  },
+];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: 'Gerador de QR Code Grátis — QRMint',
+    url: canonical,
+    applicationCategory: 'UtilitiesApplication',
+    operatingSystem: 'Any (Web Browser)',
+    description,
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'Gerador de QR Code Grátis',
+    step: steps.map((text, i) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      text,
+    })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+];
+---
+
+<Layout
+  title={title}
+  description={description}
+  canonical={canonical}
+  hreflangs={hreflangs}
+  jsonLd={jsonLd}
+>
+  <Header />
+  <main class="mx-auto max-w-5xl px-4 py-10">
+    <section class="text-center">
+      <h1 class="text-3xl font-extrabold text-slate-900 sm:text-4xl">Gerador de QR Code Grátis</h1>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-slate-600">{description}</p>
+    </section>
+
+    <div class="mt-8">
+      <QrTool defaultTab="url" />
+    </div>
+
+    <section class="mt-16">
+      <h2 class="text-2xl font-bold text-slate-900">Como funciona</h2>
+      <ol class="mt-6 grid gap-4 sm:grid-cols-3">
+        {steps.map((step, i) => (
+          <li class="rounded-xl border border-slate-200 p-4 text-sm text-slate-600">
+            <span class="mb-2 inline-flex h-7 w-7 items-center justify-center rounded-full bg-brand-600 text-sm font-bold text-white">
+              {i + 1}
+            </span>
+            <p class="mt-2">{step}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="mt-16 grid gap-6 sm:grid-cols-2">
+      {bullets.map((b) => (
+        <div class="rounded-xl border border-slate-200 p-4 text-sm text-slate-600">{b}</div>
+      ))}
+    </section>
+
+    <section class="mt-16">
+      <h2 class="text-2xl font-bold text-slate-900">Perguntas frequentes</h2>
+      <div class="mt-6 space-y-4">
+        {faqs.map((item) => (
+          <details class="rounded-xl border border-slate-200 p-4">
+            <summary class="cursor-pointer font-medium text-slate-800">{item.q}</summary>
+            <p class="mt-2 text-sm text-slate-600">{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <PremiumCta />
+  </main>
+  <Footer />
+</Layout>

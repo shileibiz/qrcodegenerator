@@ -1,0 +1,148 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import QrTool from '../../components/QrTool.astro';
+import PremiumCta from '../../components/PremiumCta.astro';
+
+const title = '無料QRコード作成 — 登録不要 | QRMint';
+const description =
+  '無料でQRコードを生成。有効期限なし、登録不要、透かしなし。静的コードだから、情報は画像に直接保存され、サーバーに依存しません。';
+
+const slug = 'qr-code-japanese';
+const canonical = new URL(`/languages/${slug}/`, Astro.site).href;
+const englishUrl = new URL('/uses/free-qr-code/', Astro.site).href;
+
+const hreflangs = [
+  { lang: 'en', href: englishUrl },
+  { lang: 'x-default', href: englishUrl },
+  { lang: 'ja', href: canonical },
+];
+
+const steps = [
+  'エンコードする内容を選ぶ：URL、テキスト、WiFi設定、vCard連絡先。',
+  'ロゴや色をカスタマイズ（全部無料、透かしなし）。',
+  'PNGまたはSVGでダウンロード。完了です。アカウント不要なので、期限切れも停止も起こりえません。',
+];
+
+const bullets = [
+  '⚠️ 「無料」の落とし穴：QR Code Generator ProやBeaconstacのようなサービスは、自社サーバー経由の動的コードを発行します。支払いを止めると、印刷済みの全コードが使えなくなります。',
+  '♾️ 静的コードは安全：URLやテキストが画像データに直接埋め込まれます。ダウンロードした後は、どんな会社も（私たちも含めて）それを無効にできません。',
+  '🆓 本当の無料とは：登録不要、透かしなし、スキャン上限なし、解像度制限なし、有効期限なし。それが私たちの無料プランです。永久に。',
+  '📊 動的コードが必要な場合：印刷後に遷移先を変更したりスキャン数を計測したい場合、それにはサーバーが必要です——それがプレミアムプランです。正直な価格設定にしています。',
+];
+
+const faqs = [
+  {
+    q: '静的QRコードと動的QRコードの違いは？',
+    a: '静的コードは画像に直接データを埋め込み、サーバー不要で永遠に使えます。動的コードはプロバイダー所有の短いリダイレクトURLを埋め込みます。遷移先の編集やスキャン追跡は可能ですが、プロバイダーまたは契約が切れるとコードは死にます。',
+  },
+  {
+    q: '他の「無料」ジェネレーターで作ったQRコードが使えなくなるのはなぜ？',
+    a: '多くのサービスは、トライアルアカウントに紐づいた動的コードを静かに発行しています。トライアルが終了するとリダイレクトサーバーがスキャンを拒否します。印刷物はお金を払わない限り無価値になります。',
+  },
+  {
+    q: '無料コードにスキャン数の制限はありますか？',
+    a: 'いいえ。静的コードは私たちのサーバーにまったくアクセスしないので、制限するもの自体がありません。100万回スキャンされても、こちらにもあなたにもコストは発生しません。',
+  },
+  {
+    q: 'QRコードをダウンロードするのにアカウントは必要ですか？',
+    a: 'いいえ。アカウントもメールアドレスもCookieも必要ありません。生成してダウンロード——ツール全体がブラウザ内で動作します。',
+  },
+  {
+    q: 'ジェネレーターが無料なら、どうやって収益を得ているのですか？',
+    a: 'プレミアム動的コードです。遷移先の編集やスキャン分析が必要な場合、それらには実際のインフラが必要で、そこに料金が発生します。静的コードは永久に無料です。',
+  },
+];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: '無料QRコード作成 — QRMint',
+    url: canonical,
+    applicationCategory: 'UtilitiesApplication',
+    operatingSystem: 'Any (Web Browser)',
+    description,
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: '無料QRコードの作り方',
+    step: steps.map((text, i) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      text,
+    })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+];
+---
+
+<Layout
+  title={title}
+  description={description}
+  canonical={canonical}
+  hreflangs={hreflangs}
+  jsonLd={jsonLd}
+>
+  <Header />
+  <main class="mx-auto max-w-5xl px-4 py-10">
+    <section class="text-center">
+      <h1 class="text-3xl font-extrabold text-slate-900 sm:text-4xl">無料QRコード作成</h1>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-slate-600">{description}</p>
+    </section>
+
+    <div class="mt-8">
+      <QrTool defaultTab="url" />
+    </div>
+
+    <section class="mt-16">
+      <h2 class="text-2xl font-bold text-slate-900">使い方</h2>
+      <ol class="mt-6 grid gap-4 sm:grid-cols-3">
+        {steps.map((step, i) => (
+          <li class="rounded-xl border border-slate-200 p-4 text-sm text-slate-600">
+            <span class="mb-2 inline-flex h-7 w-7 items-center justify-center rounded-full bg-brand-600 text-sm font-bold text-white">
+              {i + 1}
+            </span>
+            <p class="mt-2">{step}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="mt-16 grid gap-6 sm:grid-cols-2">
+      {bullets.map((b) => (
+        <div class="rounded-xl border border-slate-200 p-4 text-sm text-slate-600">{b}</div>
+      ))}
+    </section>
+
+    <section class="mt-16">
+      <h2 class="text-2xl font-bold text-slate-900">よくある質問</h2>
+      <div class="mt-6 space-y-4">
+        {faqs.map((item) => (
+          <details class="rounded-xl border border-slate-200 p-4">
+            <summary class="cursor-pointer font-medium text-slate-800">{item.q}</summary>
+            <p class="mt-2 text-sm text-slate-600">{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <PremiumCta />
+  </main>
+  <Footer />
+</Layout>
