@@ -1,0 +1,129 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import QrTool from './QrTool.astro';
+import PremiumCta from './PremiumCta.astro';
+
+export interface Props {
+  title: string;
+  description: string;
+  heading: string;
+  intro: string;
+  slug: string;
+  defaultTab?: 'text' | 'url' | 'wifi' | 'vcard';
+  bullets: string[];
+  steps: string[];
+  faqs: { q: string; a: string }[];
+}
+
+const {
+  title,
+  description,
+  heading,
+  intro,
+  slug,
+  defaultTab = 'url',
+  bullets,
+  steps,
+  faqs,
+} = Astro.props;
+
+const canonical = new URL(`/uses/${slug}/`, Astro.site).href;
+
+const hreflangs = [
+  { lang: 'en', href: canonical },
+  { lang: 'x-default', href: canonical },
+];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: `${heading} — QRMint`,
+    url: canonical,
+    applicationCategory: 'UtilitiesApplication',
+    operatingSystem: 'Any (Web Browser)',
+    description,
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: heading,
+    step: steps.map((text, i) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      text,
+    })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+];
+---
+
+<Layout
+  title={title}
+  description={description}
+  canonical={canonical}
+  hreflangs={hreflangs}
+  jsonLd={jsonLd}
+>
+  <Header />
+  <main class="mx-auto max-w-5xl px-4 py-10">
+    <section class="text-center">
+      <h1 class="text-3xl font-extrabold text-slate-900 sm:text-4xl">{heading}</h1>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-slate-600">{intro}</p>
+    </section>
+
+    <div class="mt-8">
+      <QrTool defaultTab={defaultTab} />
+    </div>
+
+    <section class="mt-16">
+      <h2 class="text-2xl font-bold text-slate-900">How it works</h2>
+      <ol class="mt-6 grid gap-4 sm:grid-cols-3">
+        {steps.map((step, i) => (
+          <li class="rounded-xl border border-slate-200 p-4 text-sm text-slate-600">
+            <span class="mb-2 inline-flex h-7 w-7 items-center justify-center rounded-full bg-brand-600 text-sm font-bold text-white">
+              {i + 1}
+            </span>
+            <p class="mt-2">{step}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="mt-16 grid gap-6 sm:grid-cols-2">
+      {bullets.map((b) => (
+        <div class="rounded-xl border border-slate-200 p-4 text-sm text-slate-600">{b}</div>
+      ))}
+    </section>
+
+    <section class="mt-16">
+      <h2 class="text-2xl font-bold text-slate-900">Frequently asked questions</h2>
+      <div class="mt-6 space-y-4">
+        {faqs.map((item) => (
+          <details class="rounded-xl border border-slate-200 p-4">
+            <summary class="cursor-pointer font-medium text-slate-800">{item.q}</summary>
+            <p class="mt-2 text-sm text-slate-600">{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <PremiumCta />
+  </main>
+  <Footer />
+</Layout>

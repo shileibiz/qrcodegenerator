@@ -1,0 +1,41 @@
+---
+const nav = [
+  { href: '/', label: 'QR Generator' },
+  { href: '/uses/wifi-qr-code/', label: 'WiFi QR' },
+  { href: '/uses/qr-code-with-logo/', label: 'Logo QR' },
+  { href: '/uses/free-qr-code/', label: 'Free QR' },
+  { href: '/alternatives/', label: 'Compare' },
+  { href: '/faq/', label: 'FAQ' },
+];
+---
+
+<header class="border-b border-slate-200 bg-white sticky top-0 z-20">
+  <div class="mx-auto flex max-w-5xl items-center justify-between px-4 py-4">
+    <a href="/" class="flex items-center gap-2 text-lg font-bold text-brand-700">
+      <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="2" y="2" width="8" height="8" rx="1.5" fill="#2563eb" />
+        <rect x="14" y="2" width="8" height="8" rx="1.5" fill="#2563eb" />
+        <rect x="2" y="14" width="8" height="8" rx="1.5" fill="#2563eb" />
+        <rect x="14" y="14" width="3.5" height="3.5" rx="1" fill="#60a5fa" />
+        <rect x="18.5" y="18.5" width="3.5" height="3.5" rx="1" fill="#60a5fa" />
+      </svg>
+      QRMint
+    </a>
+    <nav class="hidden gap-6 text-sm font-medium text-slate-600 md:flex">
+      {nav.map((item) => (
+        <a href={item.href} class="hover:text-brand-600">{item.label}</a>
+      ))}
+    </nav>
+    <a
+      href="#premium"
+      class="rounded-full bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700"
+    >
+      Go Premium
+    </a>
+  </div>
+  <nav class="flex gap-4 overflow-x-auto border-t border-slate-100 px-4 py-2 text-sm font-medium text-slate-600 md:hidden">
+    {nav.map((item) => (
+      <a href={item.href} class="whitespace-nowrap hover:text-brand-600">{item.label}</a>
+    ))}
+  </nav>
+</header>

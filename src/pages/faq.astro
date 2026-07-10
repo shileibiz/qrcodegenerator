@@ -1,0 +1,92 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const title = 'FAQ — Free QR Code Generator | QRMint';
+const description =
+  'Frequently asked questions about QRMint: static vs dynamic QR codes, expiration, privacy, logos, print sizes, and commercial use.';
+
+const canonical = new URL('/faq/', Astro.site).href;
+
+const faqs = [
+  {
+    q: 'Is QRMint really free?',
+    a: 'Yes. Static QR codes — URL, text, WiFi, and vCard — are free with no sign-up, no watermark, no scan limits, and no expiration. Premium only covers dynamic codes with editable destinations and scan analytics.',
+  },
+  {
+    q: 'Do QR codes made here ever expire?',
+    a: 'No. Static codes encode your content directly into the image. Once you download the file, it works forever — there is no server dependency and nothing we could turn off even if we wanted to.',
+  },
+  {
+    q: 'Is my data sent to your servers?',
+    a: 'No. The generator runs entirely in your browser using JavaScript. URLs, WiFi passwords, contact details, and uploaded logos never leave your device.',
+  },
+  {
+    q: 'What is the difference between static and dynamic QR codes?',
+    a: 'Static codes contain the content itself and work forever without any account. Dynamic codes contain a short redirect link, which makes the destination editable and scans trackable — but requires a service to keep running. We offer static free and dynamic as Premium.',
+  },
+  {
+    q: 'Can I use these QR codes commercially?',
+    a: 'Yes. Use them on packaging, menus, business cards, billboards — anything. There is no license fee, no attribution requirement, and no watermark.',
+  },
+  {
+    q: 'What size should I print a QR code?',
+    a: 'A rough rule: minimum size = scan distance ÷ 10. A code scanned from 25 cm (a table menu) should be at least 2.5 cm wide. For posters, download the 2048px PNG or the SVG, which scales to any size without quality loss.',
+  },
+  {
+    q: 'Why does my QR code fail to scan?',
+    a: 'The usual culprits: too little contrast between colors (keep dark modules on a light background), a logo that is too large, printing too small for the scan distance, or too much content making the modules tiny. Try High error correction and test with a real phone before printing.',
+  },
+  {
+    q: 'How much data fits in a QR code?',
+    a: 'Up to about 3KB, but practical limits are lower — roughly 300 characters keeps the code easy to scan. For long content, encode a URL that points to the content instead.',
+  },
+  {
+    q: 'Can I track how many people scan my code?',
+    a: 'Static codes cannot be tracked — scans go straight to the destination, which is also why they are private and free. Scan tracking requires a dynamic code, which is part of our Premium plan.',
+  },
+  {
+    q: 'Which file format should I download?',
+    a: 'PNG for websites, email, and social media. SVG for print — business cards, packaging, and signage — because it is a vector format that stays sharp at any size.',
+  },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const hreflangs = [
+  { lang: 'en', href: canonical },
+  { lang: 'x-default', href: canonical },
+];
+---
+
+<Layout title={title} description={description} canonical={canonical} jsonLd={jsonLd} hreflangs={hreflangs}>
+  <Header />
+  <main class="mx-auto max-w-3xl px-4 py-10">
+    <h1 class="text-3xl font-bold text-slate-900">Frequently Asked Questions</h1>
+    <p class="mt-2 text-slate-600">Everything you need to know about free QR codes that never expire.</p>
+
+    <div class="mt-8 space-y-4">
+      {faqs.map((item) => (
+        <details class="rounded-xl border border-slate-200 p-4 open:shadow-sm">
+          <summary class="cursor-pointer font-medium text-slate-800">{item.q}</summary>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">{item.a}</p>
+        </details>
+      ))}
+    </div>
+
+    <p class="mt-8 text-sm text-slate-600">
+      Ready to try it? <a href="/" class="text-brand-600 underline">Generate your free QR code</a> —
+      no sign-up needed.
+    </p>
+  </main>
+  <Footer />
+</Layout>

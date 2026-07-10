@@ -1,0 +1,45 @@
+---
+import UsePage from '../../components/UsePage.astro';
+---
+
+<UsePage
+  title="Free QR Code Generator That Never Expires — No Trial Traps | QRMint"
+  description="Genuinely free QR codes with no expiration, no sign-up, and no watermark. Learn why 'free trial' QR generators kill your printed codes — and use one that never will."
+  heading="Free QR Codes That Never Expire"
+  intro="Many 'free' QR generators give you a dynamic code on a 14-day trial — when the trial ends, your printed code goes dead. Ours are static: the content lives inside the image, so the code works forever."
+  slug="free-qr-code"
+  defaultTab="url"
+  steps={[
+    'Choose what to encode: a URL, plain text, WiFi credentials, or a vCard contact card.',
+    'Customize with a logo and colors if you like — all free, no watermark.',
+    'Download PNG or SVG. Done. There is no account, so there is nothing that can expire or be shut off.',
+  ]}
+  bullets={[
+    '⚠️ The trial trap: generators like QR Code Generator Pro and Beaconstac issue dynamic codes that route through their servers. Stop paying, and every code you printed stops working.',
+    '♾️ Static codes are trap-free: the URL or text is encoded directly into the pixels. Once downloaded, no company — including us — can turn it off.',
+    '🆓 Actually free means: no sign-up, no watermark, no scan limits, no resolution paywall, and no expiration. That is our free tier, permanently.',
+    '📊 When you DO want dynamic: if you need to change the destination after printing or count scans, that genuinely requires a server — that is our Premium tier, priced honestly.',
+  ]}
+  faqs={[
+    {
+      q: 'What is the difference between static and dynamic QR codes?',
+      a: 'A static code encodes your content directly in the image and works forever without any server. A dynamic code encodes a short redirect URL owned by the provider, which lets you edit the destination and track scans — but the code dies if the provider or your subscription lapses.',
+    },
+    {
+      q: 'Why do QR codes from other "free" generators stop working?',
+      a: 'Because they silently give you a dynamic code tied to a trial account. When the trial ends, the redirect server rejects the scan. Your printed materials are then worthless unless you pay.',
+    },
+    {
+      q: 'Is there a scan limit on free codes?',
+      a: 'No. Static codes do not touch our servers at all, so there is nothing to limit. A million scans cost us nothing and cost you nothing.',
+    },
+    {
+      q: 'Do I need an account to download my QR code?',
+      a: 'No. No account, no email, no cookie wall. Generate and download — the entire tool runs in your browser.',
+    },
+    {
+      q: 'How do you make money if the generator is free?',
+      a: 'Premium dynamic codes. If you need editable destinations or scan analytics, those features require real infrastructure, and that is what we charge for. Static codes stay free forever.',
+    },
+  ]}
+/>

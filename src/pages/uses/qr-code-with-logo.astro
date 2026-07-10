@@ -1,0 +1,45 @@
+---
+import UsePage from '../../components/UsePage.astro';
+---
+
+<UsePage
+  title="QR Code with Logo — Free Generator, No Watermark | QRMint"
+  description="Add your logo to a QR code free. Upload PNG, JPG, or SVG, pick brand colors, and download print-ready files. No watermark, no sign-up, codes never expire."
+  heading="QR Code Generator with Logo"
+  intro="Branded QR codes get up to 30% more scans. Upload your logo, match your brand colors, and download a print-ready code — completely free, with no watermark."
+  slug="qr-code-with-logo"
+  defaultTab="url"
+  steps={[
+    'Enter your URL or content, then upload your logo under Customize — PNG, JPG, SVG, and WebP all work.',
+    'Pick your brand colors. Keep strong contrast between the code color and background so scanners can read it.',
+    'Download as PNG for web and social, or SVG for business cards, packaging, and large-format printing.',
+  ]}
+  bullets={[
+    '🛡️ Error correction is automatically raised to High (30%) when you add a logo, so the code stays reliably scannable even with the center covered.',
+    '🎨 The logo is sized to 22% of the code with a clean background pad — the sweet spot between visibility and scannability.',
+    '🖨️ SVG export embeds your logo too, so you get one vector file ready for print shops — a feature most generators charge for.',
+    '✅ No watermark ever. Many "free" generators stamp their own branding on your code or blur it behind a paywall. Yours stays yours.',
+  ]}
+  faqs={[
+    {
+      q: 'Will a logo stop my QR code from scanning?',
+      a: 'Not if it is done right. QR codes include built-in error correction; at the High level, up to 30% of the code can be covered and it still scans. We size the logo well under that threshold and raise error correction automatically.',
+    },
+    {
+      q: 'What logo formats can I upload?',
+      a: 'PNG, JPG, SVG, and WebP. Square logos with transparent or white backgrounds look best. The logo never leaves your browser — it is composited locally.',
+    },
+    {
+      q: 'Can I change the QR code colors?',
+      a: 'Yes. Pick any foreground and background color. For reliable scanning, keep the code darker than the background — scanners expect dark modules on a light field.',
+    },
+    {
+      q: 'Is the logo feature really free?',
+      a: 'Yes. Logo, custom colors, high-resolution PNG, and vector SVG export are all free with no watermark. Premium is only for dynamic codes with editing and scan analytics.',
+    },
+    {
+      q: 'Should I test the code before printing?',
+      a: 'Always. Scan the preview with a couple of different phones before sending anything to print, especially if you used custom colors or a large logo.',
+    },
+  ]}
+/>

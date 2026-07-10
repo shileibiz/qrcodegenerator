@@ -1,0 +1,45 @@
+---
+import UsePage from '../../components/UsePage.astro';
+---
+
+<UsePage
+  title="WiFi QR Code Generator — Free, No Sign-up | QRMint"
+  description="Create a WiFi QR code free: guests scan once and join your network instantly, no password typing. Generated in your browser — credentials never leave your device."
+  heading="WiFi QR Code Generator"
+  intro="Let guests join your WiFi with a single scan — no more spelling out passwords. Enter your network name and password below; the code is generated locally and works forever."
+  slug="wifi-qr-code"
+  defaultTab="wifi"
+  steps={[
+    'Enter your network name (SSID), password, and encryption type — WPA/WPA2 is the default for almost all modern routers.',
+    'Watch the QR code update live, then download it as a high-resolution PNG or print-ready SVG.',
+    'Print it and place it where guests can see it — a frame on the counter, the fridge, or a table tent. Scanning with any phone camera joins the network automatically.',
+  ]}
+  bullets={[
+    '📱 Works with iPhone and Android natively — both camera apps recognize WiFi QR codes and prompt to join with one tap.',
+    '🔒 Your password never leaves your browser. The code is generated locally with JavaScript — nothing is uploaded or stored.',
+    '🖨️ Perfect for cafés, Airbnbs, offices, and guest rooms. Download at 2048px or vector SVG for crisp printing at any size.',
+    '♾️ The code never expires. It encodes the credentials directly, so it keeps working until you change your WiFi password.',
+  ]}
+  faqs={[
+    {
+      q: 'How do guests use a WiFi QR code?',
+      a: 'They open their phone camera and point it at the code. iOS and Android both show a "Join Network" prompt — one tap and they are connected. No app needed.',
+    },
+    {
+      q: 'Is it safe to put my WiFi password in a QR code?',
+      a: 'The code is generated entirely in your browser, so the password is never sent to any server. Keep in mind that anyone who can scan the printed code can read the password from it — treat the printout like you would treat the written password.',
+    },
+    {
+      q: 'What if I change my WiFi password?',
+      a: 'Static codes encode the credentials directly, so you would generate and print a new code — it takes about ten seconds. Premium dynamic codes are not applicable to WiFi; this is inherent to how WiFi QR codes work.',
+    },
+    {
+      q: 'Which encryption type should I pick?',
+      a: 'Pick WPA/WPA2/WPA3 unless you know your router uses something else — it covers virtually every home and office network set up in the last decade. Use "None" only for open networks without a password.',
+    },
+    {
+      q: 'Does it work with hidden networks?',
+      a: 'Yes. Check the "Hidden network" box and the code will include the flag that tells phones to connect even though the SSID is not broadcast.',
+    },
+  ]}
+/>

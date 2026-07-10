@@ -1,0 +1,168 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const title = 'QRMint vs QR Code Generator Pro vs QR Code Monkey vs Uniqode — Comparison | QRMint';
+const description =
+  'Compare free QR code generators: QRMint vs qr-code-generator.com, QR Code Monkey, and Uniqode. See which ones expire your codes, add watermarks, or require sign-up.';
+
+const canonical = new URL('/alternatives/', Astro.site).href;
+
+const comparisons = [
+  {
+    feature: 'Static codes free forever',
+    us: 'Yes — never expire',
+    qcg: 'Trial-based; dynamic codes expire after 14 days',
+    monkey: 'Yes',
+    uniqode: 'No — subscription required',
+  },
+  {
+    feature: 'Sign-up required',
+    us: 'No',
+    qcg: 'Yes, for most features',
+    monkey: 'No (account for saved codes)',
+    uniqode: 'Yes',
+  },
+  {
+    feature: 'Logo embedding',
+    us: 'Free',
+    qcg: 'Paid plans',
+    monkey: 'Free',
+    uniqode: 'Paid plans',
+  },
+  {
+    feature: 'Custom colors',
+    us: 'Free',
+    qcg: 'Limited free',
+    monkey: 'Free',
+    uniqode: 'Paid plans',
+  },
+  {
+    feature: 'SVG / vector export',
+    us: 'Free',
+    qcg: 'Paid plans',
+    monkey: 'Free (with account)',
+    uniqode: 'Paid plans',
+  },
+  {
+    feature: 'Watermark on free tier',
+    us: 'Never',
+    qcg: 'On some outputs',
+    monkey: 'No',
+    uniqode: 'N/A (no real free tier)',
+  },
+  {
+    feature: 'Privacy (runs in browser)',
+    us: 'Yes — data never uploaded',
+    qcg: 'No — server-generated',
+    monkey: 'No — server-generated',
+    uniqode: 'No — server-generated',
+  },
+  {
+    feature: 'WiFi QR codes',
+    us: 'Free',
+    qcg: 'Free',
+    monkey: 'Free',
+    uniqode: 'Paid',
+  },
+  {
+    feature: 'vCard contact codes',
+    us: 'Free',
+    qcg: 'Dynamic only (expires)',
+    monkey: 'Free',
+    uniqode: 'Paid',
+  },
+  {
+    feature: 'Dynamic codes (edit + tracking)',
+    us: 'Premium',
+    qcg: 'Paid plans from ~$5/mo',
+    monkey: 'Via paid QRCode Studio',
+    uniqode: 'Paid plans from ~$5/mo',
+  },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: title,
+  url: canonical,
+  description,
+};
+
+const hreflangs = [
+  { lang: 'en', href: canonical },
+  { lang: 'x-default', href: canonical },
+];
+---
+
+<Layout title={title} description={description} canonical={canonical} jsonLd={jsonLd} hreflangs={hreflangs}>
+  <Header />
+  <main class="mx-auto max-w-5xl px-4 py-10">
+    <h1 class="text-3xl font-bold text-slate-900">QR Code Generators Compared</h1>
+    <p class="mt-2 text-slate-600">
+      The QR generator market is full of "free" tools with expiring trials and watermarks. Here is
+      an honest comparison.
+    </p>
+
+    <div class="mt-8 overflow-x-auto rounded-xl border border-slate-200">
+      <table class="w-full text-left text-sm">
+        <thead class="bg-slate-50">
+          <tr>
+            <th class="px-4 py-3 font-semibold text-slate-700">Feature</th>
+            <th class="px-4 py-3 font-semibold text-brand-700">QRMint</th>
+            <th class="px-4 py-3 font-semibold text-slate-700">qr-code-generator.com</th>
+            <th class="px-4 py-3 font-semibold text-slate-700">QR Code Monkey</th>
+            <th class="px-4 py-3 font-semibold text-slate-700">Uniqode</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-slate-100">
+          {comparisons.map((row) => (
+            <tr>
+              <td class="px-4 py-3 font-medium text-slate-800">{row.feature}</td>
+              <td class="px-4 py-3 text-brand-700">{row.us}</td>
+              <td class="px-4 py-3 text-slate-600">{row.qcg}</td>
+              <td class="px-4 py-3 text-slate-600">{row.monkey}</td>
+              <td class="px-4 py-3 text-slate-600">{row.uniqode}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <section class="mt-12 grid gap-6 sm:grid-cols-2">
+      <div class="rounded-xl border border-slate-200 p-5">
+        <h2 class="font-semibold text-slate-900">When QRMint is the right choice</h2>
+        <p class="mt-2 text-sm text-slate-600">
+          You want a QR code that works forever on printed material, with your logo and colors,
+          without creating an account or worrying about a trial expiring. Privacy matters — WiFi
+          passwords and contacts are encoded locally, never uploaded.
+        </p>
+      </div>
+      <div class="rounded-xl border border-slate-200 p-5">
+        <h2 class="font-semibold text-slate-900">When a paid platform makes sense</h2>
+        <p class="mt-2 text-sm text-slate-600">
+          You run large campaigns and need to retarget destinations after printing, A/B test
+          landing pages, or report scan analytics to a client. That requires dynamic codes — see
+          our <a href="#premium" class="text-brand-600 underline">Premium plan</a> or an enterprise
+          platform like Uniqode.
+        </p>
+      </div>
+    </section>
+
+    <p class="mt-8 text-sm text-slate-600">
+      Comparison based on publicly listed features and pricing as of July 2026. Details may change —
+      check each provider's site before committing.
+    </p>
+
+    <div class="mt-10 text-center">
+      <a
+        href="/"
+        class="inline-block rounded-full bg-brand-600 px-6 py-3 font-semibold text-white transition hover:bg-brand-700"
+      >
+        Generate a free QR code now →
+      </a>
+    </div>
+  </main>
+  <Footer />
+</Layout>

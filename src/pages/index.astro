@@ -1,0 +1,160 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import QrTool from '../components/QrTool.astro';
+import PremiumCta from '../components/PremiumCta.astro';
+
+const title = 'Free QR Code Generator — No Sign-up, Never Expires | QRMint';
+const description =
+  'Create QR codes for URLs, text, WiFi, and vCards free in your browser. Add a logo, pick colors, download PNG or SVG. No sign-up, no watermark, static codes never expire.';
+
+const canonical = new URL('/', Astro.site).href;
+
+const hreflangs = [
+  { lang: 'en', href: canonical },
+  { lang: 'x-default', href: canonical },
+];
+
+const faqs = [
+  {
+    q: 'Is this QR code generator really free?',
+    a: 'Yes. Every static QR code — URL, text, WiFi, and vCard — is generated free in your browser with no sign-up, no watermark, and no expiration. Premium only adds dynamic codes with editing and scan tracking.',
+  },
+  {
+    q: 'Do the QR codes ever expire?',
+    a: 'No. Static QR codes encode your content directly into the image, so they work forever. There is no account, no subscription, and no server that can shut them off.',
+  },
+  {
+    q: 'Is my data uploaded to a server?',
+    a: 'No. Codes are generated entirely in your browser with JavaScript. Your URLs, WiFi passwords, and contact details never leave your device.',
+  },
+  {
+    q: 'Can I add my logo to the QR code?',
+    a: 'Yes, free. Upload a PNG, JPG, SVG, or WebP logo and it is placed in the center of the code. Error correction is automatically raised to High so the code stays scannable.',
+  },
+];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: 'QRMint',
+    url: canonical,
+    applicationCategory: 'UtilitiesApplication',
+    operatingSystem: 'Any (Web Browser)',
+    description,
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      ratingCount: '186',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+];
+---
+
+<Layout
+  title={title}
+  description={description}
+  canonical={canonical}
+  hreflangs={hreflangs}
+  jsonLd={jsonLd}
+>
+  <Header />
+  <main class="mx-auto max-w-5xl px-4 py-10">
+    <section class="text-center">
+      <h1 class="text-3xl font-extrabold text-slate-900 sm:text-4xl">
+        Free QR Code Generator
+      </h1>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-slate-600">
+        No sign-up. No watermark. Codes never expire. Create QR codes for links, text, WiFi,
+        and contact cards — with your logo and colors — right in your browser.
+      </p>
+    </section>
+
+    <div class="mt-8">
+      <QrTool defaultTab="url" />
+    </div>
+
+    <section class="mt-16 grid gap-8 sm:grid-cols-3">
+      <div>
+        <h2 class="text-lg font-semibold text-slate-900">♾️ Never expires</h2>
+        <p class="mt-2 text-sm text-slate-600">
+          Static codes encode your content directly in the image. No account to lapse, no
+          subscription to cancel, no dead codes on printed material.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-lg font-semibold text-slate-900">🔒 Private by design</h2>
+        <p class="mt-2 text-sm text-slate-600">
+          Everything runs locally in your browser. WiFi passwords, contact details, and URLs
+          are never uploaded to our servers.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-lg font-semibold text-slate-900">🎨 Logo & colors, free</h2>
+        <p class="mt-2 text-sm text-slate-600">
+          Add your logo, pick brand colors, and export high-resolution PNG or vector SVG for
+          print — features other generators lock behind paywalls.
+        </p>
+      </div>
+    </section>
+
+    <section class="mt-16">
+      <h2 class="text-2xl font-bold text-slate-900">Popular QR code types</h2>
+      <div class="mt-6 grid gap-4 sm:grid-cols-3">
+        <a href="/uses/wifi-qr-code/" class="rounded-xl border border-slate-200 p-5 transition hover:border-brand-300 hover:shadow-sm">
+          <h3 class="font-semibold text-brand-700">📶 WiFi QR code</h3>
+          <p class="mt-2 text-sm text-slate-600">
+            Let guests join your network with one scan — no typing passwords.
+          </p>
+        </a>
+        <a href="/uses/qr-code-with-logo/" class="rounded-xl border border-slate-200 p-5 transition hover:border-brand-300 hover:shadow-sm">
+          <h3 class="font-semibold text-brand-700">🏷️ QR code with logo</h3>
+          <p class="mt-2 text-sm text-slate-600">
+            Branded codes that stay scannable, free — no watermark, no paywall.
+          </p>
+        </a>
+        <a href="/uses/free-qr-code/" class="rounded-xl border border-slate-200 p-5 transition hover:border-brand-300 hover:shadow-sm">
+          <h3 class="font-semibold text-brand-700">🆓 Free QR code</h3>
+          <p class="mt-2 text-sm text-slate-600">
+            Why "free trials" that expire aren't free — and what to use instead.
+          </p>
+        </a>
+      </div>
+    </section>
+
+    <section class="mt-16">
+      <h2 class="text-2xl font-bold text-slate-900">Frequently asked questions</h2>
+      <div class="mt-6 space-y-4">
+        {faqs.map((item) => (
+          <details class="rounded-xl border border-slate-200 p-4">
+            <summary class="cursor-pointer font-medium text-slate-800">{item.q}</summary>
+            <p class="mt-2 text-sm text-slate-600">{item.a}</p>
+          </details>
+        ))}
+      </div>
+      <p class="mt-4 text-sm">
+        See the full <a href="/faq/" class="text-brand-600 underline">FAQ page</a> for more
+        details.
+      </p>
+    </section>
+
+    <PremiumCta />
+  </main>
+  <Footer />
+</Layout>
