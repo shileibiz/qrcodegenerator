@@ -33,8 +33,9 @@ const comparisons = [
     <section class="text-center">
       <h1 class="text-3xl font-extrabold text-slate-900 sm:text-4xl">No Internet? No Problem.</h1>
       <p class="mx-auto mt-4 max-w-2xl text-lg text-slate-600">
-        Load the QR tool once while you have a connection. Disconnect. Generate codes offline. 
-        Every QR code is created right in your browser — no server required, not even for the first load.
+        Load the QR tool once while you have a connection. Then disconnect. 
+        Every QR code is created right in your browser — as long as you do not refresh the page, 
+        it keeps working without internet.
       </p>
     </section>
 
@@ -47,7 +48,7 @@ const comparisons = [
         <li>Generate QR codes normally — everything runs locally</li>
         <li>Download your QR codes as PNG or SVG</li>
       </ol>
-      <p class="mt-4 text-sm text-slate-500">A PWA version with full offline support is coming soon.</p>
+      <p class="mt-4 text-sm text-slate-500">A PWA version with full offline support is coming soon. For now, open the homepage before going offline and do not refresh — the page stays usable until you close the tab.</p>
     </section>
 
     <section class="mt-10">
@@ -108,7 +109,7 @@ const comparisons = [
       </details>
       <details class="rounded-xl border border-slate-200 p-4">
         <summary class="cursor-pointer font-medium text-slate-800">Can I install this as an app?</summary>
-        <p class="mt-2 text-sm text-slate-600">We are working on a PWA (Progressive Web App) version that will support full offline install. For now, bookmark the page and it will work from cache after the first visit.</p>
+        <p class="mt-2 text-sm text-slate-600">We are working on a PWA (Progressive Web App) version. For now, visiting the homepage once caches the page — keep the tab open and it will work offline. Refreshing without a connection is not guaranteed to work yet.</p>
       </details>
       <details class="rounded-xl border border-slate-200 p-4">
         <summary class="cursor-pointer font-medium text-slate-800">Will the download feature work offline?</summary>

@@ -42,9 +42,9 @@ const comparisons = [
         <table class="w-full text-left text-sm">
           <thead class="bg-slate-50">
             <tr>
-              <th class="px-4 py-3 font-semibold text-slate-700"></th>
-              <th class="px-4 py-3 font-semibold text-green-700">Static QR (ours)</th>
-              <th class="px-4 py-3 font-semibold text-slate-700">Dynamic QR (most tools)</th>
+              <th class="px-4 py-3 font-semibold text-slate-700" scope="col"></th>
+              <th class="px-4 py-3 font-semibold text-green-700" scope="col">Static QR (ours)</th>
+              <th class="px-4 py-3 font-semibold text-slate-700" scope="col">Dynamic QR (most tools)</th>
             </tr>
           </thead>
           <tbody class="divide-y divide-slate-100">
@@ -61,11 +61,13 @@ const comparisons = [
       <p class="mt-4 text-xs text-slate-400">
         With a static QR, the data is in the image. Print it on a billboard in 2026 and someone scanning it in 2050 will still see the same content.
       </p>
+      <p class="mt-4 text-xs text-slate-400">* Pricing and feature data based on publicly available information as of July 2026. May have changed since.</p>
     </section>
 
     <section class="mt-12 space-y-4">
-      <h2 class="text-2xl font-bold text-slate-900">Why Most Free QR Codes Expire</h2>
-      <p class="text-slate-600">Dynamic QR codes store your URL on the provider's server. When you scan the code, it redirects to the real URL. The provider tracks every scan and charges you once you pass a certain volume or time. If you stop paying, the redirect breaks and your QR code points to nothing.<br /><br />Static QR codes work like a barcode on a cereal box. The URL is literally part of the black-and-white pattern. Nothing to expire, nothing to maintain, nothing to pay.</p>
+      <h2 class="text-2xl font-bold text-slate-900">When Static QR Makes Sense — and When It Does Not</h2>
+      <p class="text-slate-600">Static QR codes encode everything in the image itself. When you scan them, your phone reads the URL directly from the black-and-white pattern. No redirect, no server log, no expiration.</p>
+      <p class="text-slate-600">Dynamic QR codes store a short URL on a server. The scanner hits that short URL and gets redirected to the real destination. This lets the provider track scans and, crucially, change where the code points later — at the cost of making the code dependent on a server that can go down or stop being paid for.</p>
       <p class="text-sm font-medium text-slate-700">Go to the <a href="/" class="text-brand-600 underline">homepage tool</a> — every QR it generates is static and permanent.</p>
     </section>
 
