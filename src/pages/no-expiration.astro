@@ -20,8 +20,11 @@ const jsonLd = {
 };
 
 const comparisons = [
-  { type: 'Static QR (ours)', how: 'Data encoded in the image', expires: 'Never', editable: 'No (re-generate)', tracking: 'No', cost: 'Free forever' },
-  { type: 'Dynamic QR', how: 'Data stored on a server', expires: 'Yes (usually 6-12mo)', editable: 'Yes', tracking: 'Yes', cost: 'Free tier, then $7-9/mo' },
+  { feature: 'How it works', static_val: 'Data encoded in the image', dynamic_val: 'Data stored on a server' },
+  { feature: 'Expiration', static_val: 'Never', dynamic_val: 'Yes (usually 6-12mo)' },
+  { feature: 'Editable', static_val: 'No (re-generate)', dynamic_val: 'Yes' },
+  { feature: 'Tracking', static_val: 'No', dynamic_val: 'Yes' },
+  { feature: 'Cost', static_val: 'Free forever', dynamic_val: 'Free tier, then $7-9/mo' },
 ];
 ---
 
@@ -50,9 +53,9 @@ const comparisons = [
           <tbody class="divide-y divide-slate-100">
             {comparisons.map((row) => (
               <tr>
-                <td class="px-4 py-3 font-medium text-slate-800">{row.type}</td>
-                <td class="px-4 py-3 text-green-700">{row.how}</td>
-                <td class="px-4 py-3 text-slate-600">{row.how}</td>
+                <td class="px-4 py-3 font-medium text-slate-800">{row.feature}</td>
+                <td class="px-4 py-3 text-green-700">{row.static_val}</td>
+                <td class="px-4 py-3 text-slate-600">{row.dynamic_val}</td>
               </tr>
             ))}
           </tbody>
