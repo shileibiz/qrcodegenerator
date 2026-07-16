@@ -1,0 +1,387 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const title = 'QR Code Generator for Teachers — Free Classroom QR Codes | QRMint';
+const description = 'Create QR codes for your classroom — worksheets, homework links, parent notices, and more. Free, no sign-up, no expiration. Generate in your browser.';
+
+const canonical = new URL('/for-teachers/', Astro.site).href;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'QR Code Generator for Teachers — QRMint',
+  url: canonical,
+  applicationCategory: 'UtilitiesApplication',
+  operatingSystem: 'Any (Web Browser)',
+  description,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+};
+
+const scenarios = [
+  {
+    icon: '📚',
+    heading: 'Link to digital worksheets & handouts',
+    desc: 'Stop printing stacks of worksheets. Generate a QR code that takes students directly to a Google Doc, PDF, or online quiz. Post the code on the board and students scan to get their copy — no paper wasted, no "I lost it" excuses.',
+  },
+  {
+    icon: '🎯',
+    heading: 'Quick-access homework and assignments',
+    desc: 'Print QR codes on assignment sheets that link to the full instructions, rubric, or example projects. Students who miss class can scan the code on a wall display or your classroom door to catch up instantly.',
+  },
+  {
+    icon: '📖',
+    heading: 'Classroom library checkout & book reviews',
+    desc: 'Stick QR codes inside books that link to a student-written review, a summary page, or a simple checkout form. Other students can scan before borrowing to see if the book is right for them.',
+  },
+  {
+    icon: '👩‍🏫',
+    heading: 'Differentiated instruction stations',
+    desc: 'Set up learning stations around the room with a QR code at each one. Station 1 links to a video explanation, Station 2 to a practice quiz, Station 3 to a group discussion prompt. Students rotate at their own pace.',
+  },
+  {
+    icon: '💬',
+    heading: 'Parent communication & class updates',
+    desc: 'Include a QR code on take-home flyers and newsletters that links to the class website, calendar, or permission slip. Parents scan with their phone — no typing long URLs, no lost papers.',
+  },
+  {
+    icon: '📹',
+    heading: 'Video tutorials & flipped classroom',
+    desc: 'Record a short explanation of a concept and host it on a simple page. Generate a QR code for the video and paste it into your slides, handouts, or even on a poster. Students watch at home and come to class ready to discuss.',
+  },
+  {
+    icon: '🧪',
+    heading: 'Lab instructions & safety guides',
+    desc: 'In science labs, post QR codes at each station linking to the day&#39;s protocol, safety warnings, or a demonstration video. Students scan before starting — reduces questions and improves safety compliance.',
+  },
+  {
+    icon: '🏫',
+    heading: 'Scavenger hunts & interactive activities',
+    desc: 'Design a QR code scavenger hunt around the school. Each code reveals a clue, a question, or a piece of information students need to complete a worksheet. Active learning that gets students moving.',
+  },
+  {
+    icon: '📅',
+    heading: 'Event sign-ups & permission slips',
+    desc: 'Post a QR code on the classroom door or in the school newsletter that links to a simple sign-up form or digital permission slip. Parents scan and fill it out on the spot — no chasing down paper forms.',
+  },
+];
+---
+
+<Layout title={title} description={description} canonical={canonical} jsonLd={jsonLd}>
+  <Header />
+  <main class="mx-auto max-w-5xl px-4 py-10">
+    <!-- Hero -->
+    <section class="text-center">
+      <h1 class="text-3xl font-extrabold text-slate-900 sm:text-4xl">
+        QR Code Generator for Teachers
+      </h1>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-slate-600">
+        Free QR codes for your classroom — no sign-up, no watermark, no expiration. 
+        Generate codes for links, handouts, activities, and parent communication right in 
+        your browser. Your students' data never leaves your device.
+      </p>
+    </section>
+
+    <!-- Embedded QR Tool -->
+    <section class="mt-8">
+      <div id="qr-tool" class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+        <div class="flex flex-col gap-4">
+          <label for="qr-input" class="text-sm font-medium text-slate-700">
+            Enter a URL or text to turn into a QR code:
+          </label>
+          <input
+            id="qr-input"
+            type="text"
+            placeholder="https://docs.google.com/your-document or classroom link"
+            class="w-full rounded-xl border border-slate-300 px-4 py-3 text-base focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
+          />
+
+          <div class="flex flex-wrap items-center gap-4">
+            <button
+              id="qr-generate"
+              type="button"
+              class="rounded-full bg-brand-600 px-6 py-3 font-semibold text-white transition hover:bg-brand-700"
+            >
+              Generate QR Code
+            </button>
+            <button
+              id="qr-download"
+              type="button"
+              class="rounded-full border border-slate-300 px-6 py-3 font-semibold text-slate-600 transition hover:bg-slate-100 disabled:opacity-40"
+              disabled
+            >
+              Download PNG
+            </button>
+          </div>
+
+          <!-- QR code display area -->
+          <div id="qr-preview" class="mt-4 hidden flex-col items-center gap-4 sm:flex">
+            <canvas id="qr-canvas" width="300" height="300" class="rounded-xl border border-slate-200"></canvas>
+          </div>
+
+          <p id="qr-status" class="text-sm text-slate-400" aria-live="polite"></p>
+          <p class="text-xs text-slate-400">
+            QR codes are generated locally in your browser. Nothing is uploaded. 
+            Static codes never expire. Works with any URL your students need to reach.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9 classroom scenarios -->
+    <section class="mt-16">
+      <h2 class="text-2xl font-bold text-slate-900 sm:text-3xl">
+        How Teachers Use QR Codes in the Classroom
+      </h2>
+      <p class="mt-3 text-slate-600">
+        QR codes have moved beyond marketing gimmicks. Teachers around the world use them
+        every day to save time, reduce paper, and make learning more interactive. Here are
+        nine ways you can start using them tomorrow.
+      </p>
+
+      <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {scenarios.map((s) => (
+          <div class="rounded-xl border border-slate-200 p-5 transition hover:border-brand-200 hover:shadow-sm">
+            <div class="text-2xl">{s.icon}</div>
+            <h3 class="mt-3 font-semibold text-slate-900">{s.heading}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">{s.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Why teachers choose this tool -->
+    <section class="mt-16 rounded-2xl bg-slate-50 px-6 py-10">
+      <h2 class="text-2xl font-bold text-slate-900 sm:text-3xl">
+        Why This QR Generator Works for Schools
+      </h2>
+      <div class="mt-6 grid gap-6 sm:grid-cols-3">
+        <div class="rounded-xl bg-white p-5 shadow-sm">
+          <h3 class="text-lg font-semibold text-slate-900">♾️ Codes That Never Expire</h3>
+          <p class="mt-2 text-sm text-slate-600">
+            Static QR codes encode the content directly into the image. There is no
+            account, no subscription, and no server that can turn them off. Print them
+            on flashcards, posters, or handouts — they work for years.
+          </p>
+        </div>
+        <div class="rounded-xl bg-white p-5 shadow-sm">
+          <h3 class="text-lg font-semibold text-slate-900">🔒 No Data Leaves the Device</h3>
+          <p class="mt-2 text-sm text-slate-600">
+            Everything runs in the browser. Student URLs, classroom links, and any text
+            you paste never reach a server. For schools that are cautious about data
+            privacy, this matters.
+          </p>
+        </div>
+        <div class="rounded-xl bg-white p-5 shadow-sm">
+          <h3 class="text-lg font-semibold text-slate-900">🆓 Free for Unlimited Use</h3>
+          <p class="mt-2 text-sm text-slate-600">
+            No daily cap, no premium tier for basic features, no watermark. Generate as
+            many QR codes as you need for every class, every unit, every semester —
+            entirely free.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick-start guide -->
+    <section class="mt-16">
+      <h2 class="text-2xl font-bold text-slate-900 sm:text-3xl">
+        Quick-Start: First QR Code in 30 Seconds
+      </h2>
+      <ol class="mt-6 list-inside list-decimal space-y-3 text-slate-700">
+        <li>
+          <strong>Copy a link</strong> to the resource you want to share — a Google Doc,
+          a video, a quiz, or a class website.
+        </li>
+        <li>
+          <strong>Paste the link</strong> into the input field above and click
+          "Generate QR Code."
+        </li>
+        <li>
+          <strong>Download the PNG</strong> image, then paste it into your slides,
+          worksheet, or print it as a poster for the classroom wall.
+        </li>
+        <li>
+          <strong>Students scan</strong> with their phone camera or a QR reader app.
+          Most modern phones scan QR codes directly from the camera app — no extra
+          software needed.
+        </li>
+      </ol>
+    </section>
+
+    <!-- Comparison table -->
+    <section class="mt-16">
+      <h2 class="text-2xl font-bold text-slate-900 sm:text-3xl">
+        How This Tool Compares to Other QR Generators
+      </h2>
+      <div class="mt-6 overflow-x-auto rounded-xl border border-slate-200">
+        <table class="w-full text-left text-sm">
+          <thead class="bg-slate-50">
+            <tr>
+              <th class="px-4 py-3 font-semibold text-slate-700">Feature</th>
+              <th class="px-4 py-3 font-semibold text-brand-700">QRMint</th>
+              <th class="px-4 py-3 font-semibold text-slate-700">QR TIGER</th>
+              <th class="px-4 py-3 font-semibold text-slate-700">ClassTools24</th>
+              <th class="px-4 py-3 font-semibold text-slate-700">QR Code Monkey</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100">
+            <tr>
+              <td class="px-4 py-3 font-medium text-slate-800">Cost for teachers</td>
+              <td class="px-4 py-3 text-brand-700">Free, unlimited</td>
+              <td class="px-4 py-3 text-slate-600">$9/mo (Pro)</td>
+              <td class="px-4 py-3 text-slate-600">Free (basic)</td>
+              <td class="px-4 py-3 text-slate-600">Free (basic)</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium text-slate-800">Sign-up</td>
+              <td class="px-4 py-3 text-brand-700">None</td>
+              <td class="px-4 py-3 text-slate-600">Required</td>
+              <td class="px-4 py-3 text-slate-600">Not required</td>
+              <td class="px-4 py-3 text-slate-600">Not required</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium text-slate-800">Expiration</td>
+              <td class="px-4 py-3 text-brand-700">Never</td>
+              <td class="px-4 py-3 text-slate-600">Depends on plan</td>
+              <td class="px-4 py-3 text-slate-600">Never</td>
+              <td class="px-4 py-3 text-slate-600">Never</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium text-slate-800">Privacy (runs in browser)</td>
+              <td class="px-4 py-3 text-brand-700">Yes ✓</td>
+              <td class="px-4 py-3 text-slate-600">Server-side</td>
+              <td class="px-4 py-3 text-slate-600">Server-side</td>
+              <td class="px-4 py-3 text-slate-600">Server-side</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium text-slate-800">Logo overlay</td>
+              <td class="px-4 py-3 text-brand-700">Free ✓</td>
+              <td class="px-4 py-3 text-slate-600">Paid</td>
+              <td class="px-4 py-3 text-slate-600">Not available</td>
+              <td class="px-4 py-3 text-slate-600">Free</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium text-slate-800">Color customization</td>
+              <td class="px-4 py-3 text-brand-700">Free ✓</td>
+              <td class="px-4 py-3 text-slate-600">Paid</td>
+              <td class="px-4 py-3 text-slate-600">Limited</td>
+              <td class="px-4 py-3 text-slate-600">Free</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium text-slate-800">Download formats</td>
+              <td class="px-4 py-3 text-brand-700">PNG, SVG</td>
+              <td class="px-4 py-3 text-slate-600">PNG, SVG, EPS</td>
+              <td class="px-4 py-3 text-slate-600">PNG</td>
+              <td class="px-4 py-3 text-slate-600">PNG, SVG, EPS</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="mt-16 rounded-2xl bg-brand-50 px-6 py-10 text-center">
+      <h2 class="text-2xl font-bold text-slate-900">
+        Generate Your First Classroom QR Code
+      </h2>
+      <p class="mx-auto mt-2 max-w-xl text-slate-600">
+        The full QR tool on the homepage supports text, URLs, WiFi codes, vCards,
+        logo overlays, and color customization — all free, all in your browser.
+      </p>
+      <a
+        href="/"
+        class="mt-6 inline-block rounded-full bg-brand-600 px-8 py-3 font-semibold text-white transition hover:bg-brand-700"
+      >
+        Open the free QR generator →
+      </a>
+    </section>
+  </main>
+
+  <!-- Inline QR generation script (qrcode.js is already loaded globally, but we add a lightweight fallback) -->
+  <script>
+    // Lightweight QR code generation using qrcode-generator library
+    // Falls back to a simple inline implementation
+
+    (function() {
+      const input = document.getElementById('qr-input') as HTMLInputElement;
+      const generateBtn = document.getElementById('qr-generate') as HTMLButtonElement;
+      const downloadBtn = document.getElementById('qr-download') as HTMLButtonElement;
+      const canvas = document.getElementById('qr-canvas') as HTMLCanvasElement;
+      const preview = document.getElementById('qr-preview') as HTMLElement;
+      const status = document.getElementById('qr-status') as HTMLElement;
+
+      if (!input || !generateBtn) return;
+
+      // Load qrcode.js dynamically if not present
+      function loadQRCodeLib(callback: () => void) {
+        if ((window as any).QRCode) {
+          callback();
+          return;
+        }
+        const script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js';
+        script.onload = callback;
+        script.onerror = () => {
+          status.textContent = 'Could not load QR code library. Please check your internet connection.';
+        };
+        document.head.appendChild(script);
+      }
+
+      let qrCodeInstance: any = null;
+
+      function generateQR(text: string) {
+        loadQRCodeLib(() => {
+          const QRCode = (window as any).QRCode;
+          // Clear previous
+          preview.classList.remove('hidden');
+          // Remove old canvas content
+          const ctx = canvas.getContext('2d');
+          if (ctx) ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+          try {
+            qrCodeInstance = new QRCode(canvas, {
+              text: text,
+              width: 300,
+              height: 300,
+              colorDark: '#1e293b',
+              colorLight: '#ffffff',
+              correctLevel: QRCode.CorrectLevel?.H || 3,
+            });
+            status.textContent = 'QR code generated!';
+            downloadBtn.disabled = false;
+          } catch (e) {
+            status.textContent = 'Failed to generate QR code. Check the URL and try again.';
+            downloadBtn.disabled = true;
+          }
+        });
+      }
+
+      generateBtn.addEventListener('click', () => {
+        const text = input.value.trim();
+        if (!text) {
+          status.textContent = 'Enter a URL or text first.';
+          return;
+        }
+        generateQR(text);
+      });
+
+      input.addEventListener('keydown', (e: KeyboardEvent) => {
+        if (e.key === 'Enter') {
+          generateBtn.click();
+        }
+      });
+
+      downloadBtn.addEventListener('click', () => {
+        const link = document.createElement('a');
+        link.download = 'qrcode-classroom.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+        status.textContent = 'Downloaded!';
+      });
+    })();
+  </script>
+
+  <Footer />
+</Layout>
