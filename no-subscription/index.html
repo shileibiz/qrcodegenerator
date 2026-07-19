@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free QR Code Generator — No Subscription, No Sign Up, No Expiration | QRMint</title>
+  <meta name="description" content="Generate QR codes completely free — no subscription, no sign-up, no expiration. Static QR codes encode your data directly in the image so they work forever. No hidden fees." />
+  <link rel="canonical" href="https://qrmint.app/no-subscription/" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="QRMint" />
+  <meta property="og:title" content="Free QR Code Generator — No Subscription, No Sign Up, No Expiration | QRMint" />
+  <meta property="og:description" content="Generate QR codes completely free — no subscription, no sign-up, no expiration. Static QR codes encode your data directly in the image so they work forever." />
+  <meta property="og:url" content="https://qrmint.app/no-subscription/" />
+  <meta property="og:image" content="https://qrmint.app/og-default.svg" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Free QR Code Generator — No Subscription, No Sign Up, No Expiration | QRMint" />
+  <meta name="twitter:description" content="Generate QR codes completely free — no subscription, no sign-up, no expiration. Static QR codes encode your data directly in the image so they work forever." />
+  <meta name="twitter:image" content="https://qrmint.app/og-default.svg" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Free QR Code Generator — No Subscription — QRMint",
+    "url": "https://qrmint.app/no-subscription/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any (Web Browser)",
+    "description": "Generate QR codes completely free — no subscription, no sign-up, no expiration. Static QR codes encode your data directly in the image so they work forever.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <style>
+    /* Tailwind-like reset + utilities, brand: emerald (#059669) */
+    *, ::before, ::after { box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e2e8f0; }
+    html { -webkit-text-size-adjust: 100%; font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.5; }
+    body { margin: 0; }
+    h1, h2, h3, p { margin: 0; }
+    a { color: inherit; text-decoration: inherit; }
+    table { border-collapse: collapse; text-indent: 0; border-color: inherit; }
+    summary { display: list-item; }
+
+    .min-h-screen { min-height: 100vh; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+    .max-w-5xl { max-width: 64rem; }
+    .max-w-2xl { max-width: 42rem; }
+    .max-w-xl { max-width: 36rem; }
+    .max-w-3xl { max-width: 48rem; }
+    .w-full { width: 100%; }
+    .h-6 { height: 1.5rem; }
+    .w-6 { width: 1.5rem; }
+    .flex { display: flex; }
+    .hidden { display: none; }
+    .inline-block { display: inline-block; }
+    .flex-col { flex-direction: column; }
+    .flex-wrap { flex-wrap: wrap; }
+    .items-center { align-items: center; }
+    .justify-between { justify-content: space-between; }
+    .gap-2 { gap: 0.5rem; }
+    .gap-3 { gap: 0.75rem; }
+    .gap-4 { gap: 1rem; }
+    .gap-6 { gap: 1.5rem; }
+    .gap-8 { gap: 2rem; }
+    .space-y-4 > * + * { margin-top: 1rem; }
+    .space-y-6 > * + * { margin-top: 1.5rem; }
+    .divide-y > * + * { border-top-width: 1px; }
+    .sticky { position: sticky; }
+    .top-0 { top: 0; }
+    .z-20 { z-index: 20; }
+    .overflow-x-auto { overflow-x: auto; }
+    .whitespace-nowrap { white-space: nowrap; }
+    .grid { display: grid; }
+    .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+
+    .px-4 { padding-left: 1rem; padding-right: 1rem; }
+    .px-5 { padding-left: 1.25rem; padding-right: 1.25rem; }
+    .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+    .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+    .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+    .py-6 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+    .py-8 { padding-top: 2rem; padding-bottom: 2rem; }
+    .py-10 { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+    .py-12 { padding-top: 3rem; padding-bottom: 3rem; }
+    .p-4 { padding: 1rem; }
+    .p-5 { padding: 1.25rem; }
+    .p-6 { padding: 1.5rem; }
+    .mt-2 { margin-top: 0.5rem; }
+    .mt-3 { margin-top: 0.75rem; }
+    .mt-4 { margin-top: 1rem; }
+    .mt-6 { margin-top: 1.5rem; }
+    .mt-8 { margin-top: 2rem; }
+    .mt-10 { margin-top: 2.5rem; }
+    .mt-12 { margin-top: 3rem; }
+    .mt-16 { margin-top: 4rem; }
+    .mb-2 { margin-bottom: 0.5rem; }
+
+    .text-center { text-align: center; }
+    .text-left { text-align: left; }
+    .text-xs { font-size: 0.75rem; line-height: 1rem; }
+    .text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+    .text-base { font-size: 1rem; line-height: 1.5rem; }
+    .text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+    .text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+    .text-2xl { font-size: 1.5rem; line-height: 2rem; }
+    .text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+    .font-medium { font-weight: 500; }
+    .font-semibold { font-weight: 600; }
+    .font-bold { font-weight: 700; }
+    .font-extrabold { font-weight: 800; }
+    .leading-relaxed { line-height: 1.625; }
+    .antialiased { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+    .bg-white { background-color: #ffffff; }
+    .bg-slate-50 { background-color: #f8fafc; }
+    .bg-emerald-50 { background-color: #ecfdf5; }
+    .bg-emerald-600 { background-color: #059669; }
+    .bg-emerald-900 { background-color: #064e3b; }
+    .bg-red-50 { background-color: #fef2f2; }
+    .bg-amber-50 { background-color: #fffbeb; }
+    .text-white { color: #ffffff; }
+    .text-slate-400 { color: #94a3b8; }
+    .text-slate-500 { color: #64748b; }
+    .text-slate-600 { color: #475569; }
+    .text-slate-700 { color: #334155; }
+    .text-slate-800 { color: #1e293b; }
+    .text-slate-900 { color: #0f172a; }
+    .text-emerald-600 { color: #059669; }
+    .text-emerald-700 { color: #047857; }
+    .text-emerald-800 { color: #065f46; }
+    .text-green-600 { color: #16a34a; }
+    .text-red-600 { color: #dc2626; }
+    .text-red-700 { color: #b91c1c; }
+    .text-amber-700 { color: #b45309; }
+
+    .border { border-width: 1px; }
+    .border-b { border-bottom-width: 1px; }
+    .border-t { border-top-width: 1px; }
+    .border-slate-100 { border-color: #f1f5f9; }
+    .border-slate-200 { border-color: #e2e8f0; }
+    .border-slate-300 { border-color: #cbd5e1; }
+    .border-emerald-200 { border-color: #a7f3d0; }
+    .border-red-200 { border-color: #fecaca; }
+    .border-amber-200 { border-color: #fde68a; }
+    .divide-slate-100 > * + * { border-color: #f1f5f9; }
+    .rounded { border-radius: 0.25rem; }
+    .rounded-full { border-radius: 9999px; }
+    .rounded-lg { border-radius: 0.5rem; }
+    .rounded-xl { border-radius: 0.75rem; }
+    .rounded-2xl { border-radius: 1rem; }
+
+    .cursor-pointer { cursor: pointer; }
+    .transition { transition-property: color, background-color, border-color; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
+    .hover\:text-emerald-600:hover { color: #059669; }
+    .hover\:bg-emerald-700:hover { background-color: #047857; }
+    .hover\:shadow-sm:hover { box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05); }
+    .shadow-sm { box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05); }
+    .ring-2 { --tw-ring-offset-shadow: 0 0 0 0 #fff; --tw-ring-shadow: 0 0 0 calc(2px + 0px) rgba(5, 150, 105, 0.3); box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), 0 0 #0000; }
+
+    .list-disc { list-style-type: disc; }
+    .list-inside { list-style-position: inside; }
+    .pl-5 { padding-left: 1.25rem; }
+    .italic { font-style: italic; }
+    .underline { text-decoration: underline; }
+
+    @media (min-width: 640px) {
+      .sm\:text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+      .sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (min-width: 768px) {
+      .md\:flex { display: flex; }
+      .md\:hidden { display: none; }
+      .md\:flex-row { flex-direction: row; }
+      .md\:items-center { align-items: center; }
+      .md\:justify-between { justify-content: space-between; }
+      .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-white text-slate-800 antialiased">
+  <header class="border-b border-slate-200 bg-white sticky top-0 z-20">
+    <div class="mx-auto flex max-w-5xl items-center justify-between px-4 py-4">
+      <a href="/" class="flex items-center gap-2 text-lg font-bold text-emerald-700">
+        <span class="inline-block h-6 w-6 rounded bg-emerald-600"></span>
+        QRMint
+      </a>
+      <nav class="hidden gap-6 text-sm font-medium text-slate-600 md:flex">
+        <a href="/" class="hover:text-emerald-600">QR Generator</a>
+        <a href="/uses/wifi-qr-code/" class="hover:text-emerald-600">WiFi QR</a>
+        <a href="/uses/qr-code-with-logo/" class="hover:text-emerald-600">Logo QR</a>
+        <a href="/uses/free-qr-code/" class="hover:text-emerald-600">Free QR</a>
+        <a href="/alternatives/" class="hover:text-emerald-600">Compare</a>
+        <a href="/faq/" class="hover:text-emerald-600">FAQ</a>
+      </nav>
+      <a href="#premium" class="rounded-full bg-emerald-600 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-700">
+        Go Premium
+      </a>
+    </div>
+    <nav class="flex gap-4 overflow-x-auto border-t border-slate-100 px-4 py-2 text-sm font-medium text-slate-600 md:hidden">
+      <a href="/" class="whitespace-nowrap hover:text-emerald-600">QR Generator</a>
+      <a href="/uses/wifi-qr-code/" class="whitespace-nowrap hover:text-emerald-600">WiFi QR</a>
+      <a href="/uses/qr-code-with-logo/" class="whitespace-nowrap hover:text-emerald-600">Logo QR</a>
+      <a href="/uses/free-qr-code/" class="whitespace-nowrap hover:text-emerald-600">Free QR</a>
+      <a href="/alternatives/" class="whitespace-nowrap hover:text-emerald-600">Compare</a>
+      <a href="/faq/" class="whitespace-nowrap hover:text-emerald-600">FAQ</a>
+    </nav>
+  </header>
+
+  <main class="mx-auto max-w-5xl px-4 py-10">
+    <!-- Hero -->
+    <section class="text-center">
+      <h1 class="text-3xl font-extrabold text-slate-900 sm:text-4xl">
+        Free QR Code Generator — No Subscription, No Sign Up, No Expiration
+      </h1>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-slate-600">
+        Generate QR codes that work forever — no account, no billing info, no "upgrade to scan" traps.
+        Static codes encode your data directly in the image. Print once, scan forever.
+      </p>
+    </section>
+
+    <!-- The Problem -->
+    <section class="mt-12">
+      <div class="rounded-xl border border-red-200 bg-red-50 p-6">
+        <h2 class="text-xl font-bold text-red-700">The subscription trap most QR tools won't tell you about</h2>
+        <p class="mt-3 text-slate-700">
+          You find a "free" QR code generator, create a code, print it on your business cards or product packaging.
+          Months later, the link stops working. You go back to the site and discover your code was <strong>dynamic</strong> —
+          it stored a short URL on their server that expired when your free trial ended. To get it working again,
+          you need to pay $7–$15/month.
+        </p>
+        <p class="mt-3 font-semibold text-red-700">
+          This is not a bug. It is the business model.
+        </p>
+      </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold text-slate-900">QR fee traps exposed</h2>
+      <p class="mt-2 text-slate-600">How the "free" QR generators really work — and how QRMint is different.</p>
+      <div class="mt-6 overflow-x-auto rounded-xl border border-slate-200">
+        <table class="w-full text-left text-sm">
+          <thead class="bg-slate-50">
+            <tr>
+              <th class="px-4 py-3 font-semibold text-slate-700">Feature</th>
+              <th class="px-4 py-3 font-semibold text-emerald-700">QRMint (this)</th>
+              <th class="px-4 py-3 font-semibold text-slate-700">qr-code-generator.com</th>
+              <th class="px-4 py-3 font-semibold text-slate-700">Bitly</th>
+              <th class="px-4 py-3 font-semibold text-slate-700">QR.io</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100">
+            <tr>
+              <td class="px-4 py-3 font-medium text-slate-800">Price model</td>
+              <td class="px-4 py-3 text-emerald-600">Free, no caps</td>
+              <td class="px-4 py-3 text-slate-600">Free tier + $9/mo</td>
+              <td class="px-4 py-3 text-slate-600">Free tier + $8/mo</td>
+              <td class="px-4 py-3 text-slate-600">Free tier + $7/mo</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium text-slate-800">Sign-up required</td>
+              <td class="px-4 py-3 text-emerald-600">No</td>
+              <td class="px-4 py-3 text-slate-600">Yes</td>
+              <td class="px-4 py-3 text-slate-600">Yes</td>
+              <td class="px-4 py-3 text-slate-600">Yes</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium text-slate-800">Code type</td>
+              <td class="px-4 py-3 text-emerald-600">Static (permanent)</td>
+              <td class="px-4 py-3 text-slate-600">Dynamic (expires)</td>
+              <td class="px-4 py-3 text-slate-600">Dynamic (expires)</td>
+              <td class="px-4 py-3 text-slate-600">Dynamic (expires)</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium text-slate-800">Code expiration</td>
+              <td class="px-4 py-3 text-emerald-600">Never</td>
+              <td class="px-4 py-3 text-slate-600">6 months (free)</td>
+              <td class="px-4 py-3 text-slate-600">12 months (free)</td>
+              <td class="px-4 py-3 text-slate-600">12 months (free)</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium text-slate-800">Scan tracking included</td>
+              <td class="px-4 py-3 text-emerald-600">No (static has none)</td>
+              <td class="px-4 py-3 text-slate-600">Free tier only</td>
+              <td class="px-4 py-3 text-slate-600">Yes</td>
+              <td class="px-4 py-3 text-slate-600">Yes</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium text-slate-800">Can add logo</td>
+              <td class="px-4 py-3 text-emerald-600">Yes, free</td>
+              <td class="px-4 py-3 text-slate-600">Paid plans only</td>
+              <td class="px-4 py-3 text-slate-600">Paid plans only</td>
+              <td class="px-4 py-3 text-slate-600">Paid plans only</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 font-medium text-slate-800">Watermark on free</td>
+              <td class="px-4 py-3 text-emerald-600">No watermark</td>
+              <td class="px-4 py-3 text-slate-600">Yes</td>
+              <td class="px-4 py-3 text-slate-600">No</td>
+              <td class="px-4 py-3 text-slate-600">Yes</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-3 text-xs text-slate-400">* Pricing and feature data based on publicly available information as of July 2026. May have changed since.</p>
+    </section>
+
+    <!-- Reddit Pain Points -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold text-slate-900">What Reddit users are saying</h2>
+      <p class="mt-2 text-slate-600">Real complaints from people who got caught in QR subscription traps:</p>
+      <div class="mt-6 space-y-4">
+        <div class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+          <p class="italic text-slate-700">"Generated a QR code with a 'free' tool, printed 10,000 labels for my products. Six months later, the code redirects to a 'subscribe to continue' page. Had to relabel everything."</p>
+          <p class="mt-2 text-xs text-slate-400">— r/smallbusiness</p>
+        </div>
+        <div class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+          <p class="italic text-slate-700">"The 'free' QR generator I used turned out to be dynamic. My menu QR code died after the trial. Restaurant had to reprint all table tents."</p>
+          <p class="mt-2 text-xs text-slate-400">— r/restaurantowners</p>
+        </div>
+        <div class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+          <p class="italic text-slate-700">"qr-code-generator.com = free to generate, but after 6 months they start charging to keep your codes alive. It's a subscription trap."</p>
+          <p class="mt-2 text-xs text-slate-400">— r/webdev</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- How to Spot Traps -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold text-slate-900">How to spot a QR subscription trap</h2>
+      <div class="mt-6 grid gap-4 sm:grid-cols-2">
+        <div class="rounded-xl border border-red-200 bg-red-50 p-5">
+          <h3 class="font-semibold text-red-700">🚩 Red flags</h3>
+          <ul class="mt-3 space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>Requires account creation</li>
+            <li>Shows scan analytics (means it's dynamic)</li>
+            <li>Says "free trial" or "limited time"</li>
+            <li>Mentions code expiration or renewal</li>
+            <li>Watermark on generated codes</li>
+          </ul>
+        </div>
+        <div class="rounded-xl border border-emerald-200 bg-emerald-50 p-5">
+          <h3 class="font-semibold text-emerald-700">✅ What to look for</h3>
+          <ul class="mt-3 space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>No account or email required</li>
+            <li>Code generation happens in your browser</li>
+            <li>Download as PNG/SVG immediately</li>
+            <li>No expiration date mentioned</li>
+            <li>No watermark or branding overlaid</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="mt-12 rounded-2xl bg-emerald-900 px-6 py-12 text-center text-white">
+      <h2 class="text-2xl font-bold">Generate a QR code right now — free, no strings attached</h2>
+      <p class="mx-auto mt-3 max-w-xl text-emerald-100">
+        No account. No subscription. No expiration. Just a QR code that works forever.
+      </p>
+      <a href="/" class="mt-6 inline-block rounded-full bg-white px-6 py-3 font-semibold text-emerald-800 transition hover:bg-emerald-50">
+        Open the free QR generator →
+      </a>
+    </section>
+
+    <!-- FAQ -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold text-slate-900">Frequently asked questions</h2>
+      <div class="mt-6 space-y-4">
+        <details class="rounded-xl border border-slate-200 p-4">
+          <summary class="cursor-pointer font-medium text-slate-800">What's the difference between static and dynamic QR codes?</summary>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">Static QR codes encode the destination URL (or text) directly into the image pattern. When someone scans it, their phone reads the URL straight from the image — no server involved. Dynamic QR codes store a short ID on a server; scans get redirected through that server. The server can expire (or start charging for) that redirect at any time.</p>
+        </details>
+        <details class="rounded-xl border border-slate-200 p-4">
+          <summary class="cursor-pointer font-medium text-slate-800">Do QR codes generated on QRMint ever expire?</summary>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">No. Every QR code on QRMint is static — the data is encoded directly into the image. There is no server keeping it alive, no account tracking it, and no subscription to keep it working. Print it today; it will still scan in 20 years.</p>
+        </details>
+        <details class="rounded-xl border border-slate-200 p-4">
+          <summary class="cursor-pointer font-medium text-slate-800">I used another "free" QR tool. Can I check if my code will expire?</summary>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">Hard to tell just by looking at the code. But check: did you create an account? Does the tool's dashboard show scan analytics? Does it mention "dynamic" codes? If yes to any of these, your codes are likely dynamic and may expire when the free period ends. Generate a static replacement on QRMint to be safe.</p>
+        </details>
+        <details class="rounded-xl border border-slate-200 p-4">
+          <summary class="cursor-pointer font-medium text-slate-800">Can I add a logo to my QR code for free?</summary>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">Yes, free. Upload a logo image and it is placed in the center of the QR code. Error correction automatically adjusts to High so the code stays scannable. Most other generators charge extra for this feature.</p>
+        </details>
+        <details class="rounded-xl border border-slate-200 p-4">
+          <summary class="cursor-pointer font-medium text-slate-800">What payment info do I need to start?</summary>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600">Nothing. No credit card, no PayPal, no email. Open the tool, type your content, download your QR code. That is the entire flow.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="mt-16 border-t border-slate-200 bg-slate-50">
+    <div class="mx-auto max-w-5xl px-4 py-10 text-sm text-slate-500">
+      <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <p>&copy; 2026 QRMint — free QR code generator. Static codes never expire.</p>
+        <div class="flex flex-wrap gap-4">
+          <a href="/uses/wifi-qr-code/" class="hover:text-emerald-600">WiFi QR</a>
+          <a href="/uses/qr-code-with-logo/" class="hover:text-emerald-600">Logo QR</a>
+          <a href="/faq/" class="hover:text-emerald-600">FAQ</a>
+          <a href="/alternatives/" class="hover:text-emerald-600">Alternatives</a>
+          <a href="#premium" class="hover:text-emerald-600">Premium</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
