@@ -1,0 +1,61 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = 'Contact — QRMint';
+const description = 'Contact the QRMint team with questions, feedback, or support requests.';
+const canonical = new URL('/contact/', Astro.site).href;
+---
+
+<Layout title={title} description={description} canonical={canonical}>
+  <header class="border-b border-slate-200 bg-white sticky top-0 z-20">
+    <div class="mx-auto flex max-w-5xl items-center justify-between px-4 py-4">
+      <a href="/" class="flex items-center gap-2 text-lg font-bold text-brand-700">
+        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="2" y="2" width="8" height="8" rx="1.5" fill="#2563eb" />
+          <rect x="14" y="2" width="8" height="8" rx="1.5" fill="#2563eb" />
+          <rect x="2" y="14" width="8" height="8" rx="1.5" fill="#2563eb" />
+          <rect x="14" y="14" width="3.5" height="3.5" rx="1" fill="#60a5fa" />
+          <rect x="18.5" y="18.5" width="3.5" height="3.5" rx="1" fill="#60a5fa" />
+        </svg>
+        QRMint
+      </a>
+      <a
+        href="/"
+        class="rounded-full bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700"
+      >
+        ← Back to Home
+      </a>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-3xl px-4 py-12">
+    <h1 class="text-3xl font-extrabold text-slate-900">Contact Us</h1>
+    <p class="mt-2 text-slate-600">Have a question, suggestion, or found a bug? We'd love to hear from you.</p>
+
+    <div class="mt-8 rounded-xl border border-slate-200 bg-white p-8">
+      <form action="mailto:hello@qrmint.app" method="post" enctype="text/plain" class="space-y-5">
+        <div>
+          <label for="name" class="block text-sm font-semibold text-slate-700">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none" />
+        </div>
+        <div>
+          <label for="email" class="block text-sm font-semibold text-slate-700">Email</label>
+          <input type="email" id="email" name="email" placeholder="your@email.com" required class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none" />
+        </div>
+        <div>
+          <label for="subject" class="block text-sm font-semibold text-slate-700">Subject</label>
+          <input type="text" id="subject" name="subject" placeholder="What is this about?" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none" />
+        </div>
+        <div>
+          <label for="message" class="block text-sm font-semibold text-slate-700">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Your message..." required class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-brand-500 focus:ring-2 focus:ring-brand-200 outline-none resize-y"></textarea>
+        </div>
+        <button type="submit" class="rounded-full bg-brand-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-brand-700 transition-colors">Send Message</button>
+      </form>
+
+      <div class="mt-6 rounded-lg bg-blue-50 p-4 border border-blue-100">
+        <p class="text-sm text-slate-700">📧 <strong>Email us directly:</strong> <a href="mailto:hello@qrmint.app" class="text-brand-600 underline">hello@qrmint.app</a></p>
+      </div>
+    </div>
+  </main>
+</Layout>

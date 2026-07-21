@@ -1,0 +1,59 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = 'About — QRMint';
+const description = 'About QRMint — free, private, browser-based QR code generator.';
+const canonical = new URL('/about/', Astro.site).href;
+---
+
+<Layout title={title} description={description} canonical={canonical}>
+  <header class="border-b border-slate-200 bg-white sticky top-0 z-20">
+    <div class="mx-auto flex max-w-5xl items-center justify-between px-4 py-4">
+      <a href="/" class="flex items-center gap-2 text-lg font-bold text-brand-700">
+        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="2" y="2" width="8" height="8" rx="1.5" fill="#2563eb" />
+          <rect x="14" y="2" width="8" height="8" rx="1.5" fill="#2563eb" />
+          <rect x="2" y="14" width="8" height="8" rx="1.5" fill="#2563eb" />
+          <rect x="14" y="14" width="3.5" height="3.5" rx="1" fill="#60a5fa" />
+          <rect x="18.5" y="18.5" width="3.5" height="3.5" rx="1" fill="#60a5fa" />
+        </svg>
+        QRMint
+      </a>
+      <a
+        href="/"
+        class="rounded-full bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700"
+      >
+        ← Back to Home
+      </a>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-3xl px-4 py-12">
+    <article class="prose prose-slate max-w-none">
+      <h1>About QRMint</h1>
+
+      <h2>Our Mission</h2>
+      <p>QRMint makes QR code generation simple, private, and free. We believe creating a QR code shouldn't require signing up for a service, trusting your data to a cloud platform, or worrying about codes that expire.</p>
+
+      <h2>Why We Built This</h2>
+      <p>Most QR code generators have hidden catches: your codes expire unless you pay, your data is uploaded to their servers, or free tiers come with watermarks and limits. We built QRMint because:</p>
+      <ul>
+        <li>Static QR codes don't need a server — they encode data directly in the image</li>
+        <li>Your WiFi password and contact details should never leave your computer</li>
+        <li>Adding a logo or choosing colors shouldn't be a "premium" feature</li>
+        <li>A QR code you print should work forever, not expire when a trial ends</li>
+      </ul>
+
+      <h2>Our Values</h2>
+      <ul>
+        <li><strong>Privacy first.</strong> Everything runs in your browser. Nothing is uploaded.</li>
+        <li><strong>No expiration.</strong> Static codes are permanent. Download once, use forever.</li>
+        <li><strong>Free core.</strong> Static QR codes for URLs, WiFi, vCards, and text are free.</li>
+        <li><strong>Logo & colors included.</strong> Branded codes without the paywall.</li>
+      </ul>
+
+      <h2>Who We Are</h2>
+      <p>We are a small team building useful web tools. We create pure front-end applications — no servers, no databases, no user tracking.</p>
+    </article>
+  </main>
+</Layout>
