@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://qrmint.app',
+  site: 'https://qrcodegenerator.pages.dev',
   output: 'static',
   integrations: [tailwind(), sitemap()],
 });
