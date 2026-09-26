@@ -1,0 +1,27 @@
+---
+import UsePage from '../../components/UsePage.astro';
+---
+
+<UsePage
+  title="QR Code Generator Without Sign-up or Account | QRMint"
+  description="Make a static QR code for a URL, text, WiFi, or contact card without creating an account. Download PNG or SVG directly from your browser."
+  heading="Create a QR Code Without Sign-up"
+  intro="Enter your content and download a static QR code immediately. There is no account form or email step."
+  slug="qr-code-no-sign-up"
+  defaultTab="url"
+  steps={[
+    'Choose the URL, text, WiFi, or vCard tab and enter what you want the code to contain.',
+    'Review the preview and scan it with a phone to check the result.',
+    'Download PNG or SVG. There is no sign-up step.',
+  ]}
+  bullets={[
+    'Generation happens in your browser; the content you enter is not uploaded to QRMint.',
+    'You can adjust colors, add a logo, and choose the PNG download size without creating an account.',
+    'The downloaded static code encodes your content directly and does not use a QRMint redirect.',
+    'For a changed URL or contact detail, create and download a replacement code.',
+  ]}
+  faqs={[
+    { q: 'Do I need an email address to download?', a: 'No. Enter your content above and select Download PNG or Download SVG.' },
+    { q: 'Can I edit the code after downloading?', a: 'Static QR codes cannot be edited after download. Make a new code when the content changes.' },
+  ]}
+/>

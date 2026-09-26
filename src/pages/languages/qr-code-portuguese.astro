@@ -3,7 +3,6 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import QrTool from '../../components/QrTool.astro';
-import PremiumCta from '../../components/PremiumCta.astro';
 
 const title = 'Gerador de QR Code Grátis — Sem Cadastro | QRMint';
 const description =
@@ -29,7 +28,7 @@ const bullets = [
   '⚠️ A armadilha do "grátis": geradores como QR Code Generator Pro e Beaconstac te dão códigos dinâmicos que passam pelos servidores deles. Pare de pagar e todos os códigos que você imprimiu param de funcionar.',
   '♾️ Códigos estáticos não têm pegadinha: a URL ou o texto é codificado direto nos pixels. Depois de baixado, nenhuma empresa — nem a gente — consegue desligar.',
   '🆓 Grátis de verdade significa: sem cadastro, sem marca d\'água, sem limite de escaneamentos, sem paywall de resolução, sem data de validade. Esse é nosso plano gratuito, permanentemente.',
-  '📊 Quando você PRECISA de um dinâmico: se quiser mudar o destino depois de imprimir ou contar escaneamentos, isso realmente precisa de um servidor — esse é nosso plano Premium, com preço honesto.',
+  '📊 Se precisar mudar o destino após imprimir ou contar escaneamentos, use um serviço de códigos QR dinâmicos. O QRMint gera apenas códigos estáticos.',
 ];
 
 const faqs = [
@@ -50,8 +49,8 @@ const faqs = [
     a: 'Não. Sem conta, sem email, sem cookie wall. Gere e baixe — a ferramenta inteira roda no seu navegador. Ponto.',
   },
   {
-    q: 'Como vocês ganham dinheiro se o gerador é grátis?',
-    a: 'Com códigos dinâmicos Premium. Se você precisa editar destinos ou ver analytics de escaneamento, essas funções exigem infraestrutura de verdade, e é isso que cobramos. Os códigos estáticos continuam gratuitos para sempre.',
+    q: 'Vocês oferecem códigos QR dinâmicos?',
+    a: 'Não. O QRMint gera apenas códigos QR estáticos. O conteúdo não pode ser editado após o download.',
   },
 ];
 
@@ -142,7 +141,6 @@ const jsonLd = [
       </div>
     </section>
 
-    <PremiumCta />
   </main>
   <Footer />
 </Layout>

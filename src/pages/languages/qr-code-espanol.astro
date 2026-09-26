@@ -3,7 +3,6 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import QrTool from '../../components/QrTool.astro';
-import PremiumCta from '../../components/PremiumCta.astro';
 
 const title = 'Generador de Códigos QR Gratis — Sin Registro | QRMint';
 const description =
@@ -29,7 +28,7 @@ const bullets = [
   '⚠️ La trampa del "gratis": generadores como QR Code Generator Pro y Beaconstac te dan códigos dinámicos que pasan por sus servidores. Dejás de pagar y todos los códigos que imprimiste dejan de funcionar.',
   '♾️ Los códigos estáticos no tienen trampa: la URL o el texto se codifican directamente en la imagen. Una vez descargado, ninguna empresa —ni siquiera nosotros— puede desactivarlo.',
   '🆓 Gratis de verdad significa: sin registro, sin marca de agua, sin límites de escaneo, sin paywall de resolución, sin fecha de vencimiento. Ese es nuestro plan gratuito, para siempre.',
-  '📊 Cuando SÍ necesitás uno dinámico: si querés cambiar el destino después de imprimirlo o contar escaneos, eso requiere un servidor —es nuestro plan Premium, con un precio honesto.',
+  '📊 Si necesitás cambiar el destino después de imprimir o contar escaneos, buscá un servicio de códigos QR dinámicos. QRMint solo genera códigos estáticos.',
 ];
 
 const faqs = [
@@ -50,8 +49,8 @@ const faqs = [
     a: 'No. Sin cuenta, sin email, sin cookies. Generás y descargás — todo funciona en tu navegador.',
   },
   {
-    q: '¿Cómo ganan dinero si el generador es gratuito?',
-    a: 'Con los códigos dinámicos Premium. Si necesitás cambiar el destino o ver estadísticas de escaneo, esas funciones requieren infraestructura de verdad, y eso es lo que cobramos. Los códigos estáticos son gratis para siempre.',
+    q: '¿Ofrecen códigos QR dinámicos?',
+    a: 'No. QRMint solo genera códigos QR estáticos. El contenido no se puede editar después de descargar el código.',
   },
 ];
 
@@ -142,7 +141,6 @@ const jsonLd = [
       </div>
     </section>
 
-    <PremiumCta />
   </main>
   <Footer />
 </Layout>

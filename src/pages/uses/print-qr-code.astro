@@ -1,0 +1,27 @@
+---
+import UsePage from '../../components/UsePage.astro';
+---
+
+<UsePage
+  title="Print a QR Code: 2048px PNG or SVG | QRMint"
+  description="Generate a static QR code for print and download a 2048px PNG or scalable SVG. Learn how to keep contrast, clear space, and test the final print."
+  heading="Make a QR Code for Print"
+  intro="Generate the code below, choose 2048 × 2048 px under Download size for a large PNG, or download SVG for a scalable vector file."
+  slug="print-qr-code"
+  defaultTab="url"
+  steps={[
+    'Enter your URL or select another supported QR type, then check the preview with a phone.',
+    'For PNG, set Download size to 2048 × 2048 px and click Download PNG. For vector artwork, click Download SVG.',
+    'Place the file with clear space around it, print a sample, and scan the physical print before producing copies.',
+  ]}
+  bullets={[
+    'Keep dark code modules on a light background with enough contrast for phone cameras.',
+    'Leave a quiet margin around the QR code; avoid placing text or graphics against its edges.',
+    'Use a size suited to the expected viewing distance and avoid stretching the code unevenly.',
+    'If the destination or encoded details change, regenerate and replace the printed static code.',
+  ]}
+  faqs={[
+    { q: 'What is the largest PNG download option?', a: 'Choose 2048 × 2048 px in the Download size menu above.' },
+    { q: 'Should I use PNG or SVG for print?', a: 'Both can work. Use the 2048px PNG at an appropriate physical size, or SVG when the design needs a scalable vector file.' },
+  ]}
+/>

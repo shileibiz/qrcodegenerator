@@ -1,0 +1,27 @@
+---
+import UsePage from '../../components/UsePage.astro';
+---
+
+<UsePage
+  title="SVG QR Code Generator for Sharp Vector Export | QRMint"
+  description="Generate a static QR code and download it as SVG for scalable artwork. Supports URLs, text, WiFi, and vCards, with optional colors and logo."
+  heading="Download a QR Code as SVG"
+  intro="SVG is a vector file that stays sharp when resized. Use the generator below and choose Download SVG for artwork that needs to scale."
+  slug="svg-qr-code"
+  defaultTab="url"
+  steps={[
+    'Choose URL, text, WiFi, or vCard and enter the content to encode.',
+    'Set colors or add a logo if needed, then scan the on-screen preview with a phone.',
+    'Select Download SVG and place the vector file in your design.',
+  ]}
+  bullets={[
+    'The SVG download is available for every QR type supported by the generator.',
+    'SVG can be enlarged without pixelation, which makes it useful for print layouts.',
+    'Keep strong contrast between the code and background; leave clear space around the code.',
+    'If you add a logo, test the finished artwork at its intended size before printing.',
+  ]}
+  faqs={[
+    { q: 'Is SVG export free?', a: 'Yes. Enter content above and use the Download SVG button; no account is required.' },
+    { q: 'Can I also download a PNG?', a: 'Yes. The generator also offers PNG downloads at 512, 1024, or 2048 pixels.' },
+  ]}
+/>

@@ -12,7 +12,7 @@ const canonical = new URL('/faq/', Astro.site).href;
 const faqs = [
   {
     q: 'Is QRMint really free?',
-    a: 'Yes. Static QR codes — URL, text, WiFi, and vCard — are free with no sign-up, no watermark, no scan limits, and no expiration. Premium only covers dynamic codes with editable destinations and scan analytics.',
+    a: 'Yes. Static QR codes — URL, text, WiFi, and vCard — are free with no sign-up, no watermark, no scan limits, and no expiration.',
   },
   {
     q: 'Do QR codes made here ever expire?',
@@ -24,7 +24,7 @@ const faqs = [
   },
   {
     q: 'What is the difference between static and dynamic QR codes?',
-    a: 'Static codes contain the content itself and work forever without any account. Dynamic codes contain a short redirect link, which makes the destination editable and scans trackable — but requires a service to keep running. We offer static free and dynamic as Premium.',
+    a: 'Static codes contain the content itself and work without an account. Dynamic codes contain a short redirect link, which makes the destination editable and scans trackable, but requires a service to keep running. QRMint generates static codes only.',
   },
   {
     q: 'Can I use these QR codes commercially?',
@@ -44,7 +44,7 @@ const faqs = [
   },
   {
     q: 'Can I track how many people scan my code?',
-    a: 'Static codes cannot be tracked — scans go straight to the destination, which is also why they are private and free. Scan tracking requires a dynamic code, which is part of our Premium plan.',
+    a: 'QRMint does not track scans. Static URL codes point directly to the destination. If you need scan counts, you would need a separate tracking service or a dynamic code provider.',
   },
   {
     q: 'Which file format should I download?',

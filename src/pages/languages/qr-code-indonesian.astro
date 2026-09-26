@@ -3,7 +3,6 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import QrTool from '../../components/QrTool.astro';
-import PremiumCta from '../../components/PremiumCta.astro';
 
 const title = 'Pembuat Kode QR Gratis — Tanpa Daftar | QRMint';
 const description =
@@ -29,7 +28,7 @@ const bullets = [
   '⚠️ Jebakan "gratis": generator seperti QR Code Generator Pro dan Beaconstac memberi kamu kode dinamis yang jalan lewat server mereka. Begitu berhenti bayar, semua kode yang sudah kamu cetak berhenti berfungsi.',
   '♾️ Kode statis aman: URL atau teks dikodekan langsung ke dalam piksel. Setelah diunduh, tidak ada perusahaan — termasuk kami — yang bisa mematikannya.',
   '🆓 Gratis beneran artinya: tanpa daftar, tanpa tanda air, tanpa batas pindai, tanpa paywall resolusi, tanpa kedaluwarsa. Itu paket gratis kami, selamanya.',
-  '📊 Kalau kamu BUTUH yang dinamis: kalau ingin mengubah tujuan setelah dicetak atau menghitung jumlah pindai, itu memang perlu server — itu paket Premium kami, dengan harga yang jujur.',
+  '📊 Jika perlu mengubah tujuan setelah dicetak atau menghitung pemindaian, gunakan layanan kode QR dinamis. QRMint hanya membuat kode statis.',
 ];
 
 const faqs = [
@@ -50,8 +49,8 @@ const faqs = [
     a: 'Tidak perlu. Tanpa akun, tanpa email, tanpa cookie. Buat dan unduh — seluruh alat berjalan di browser kamu.',
   },
   {
-    q: 'Bagaimana kalian menghasilkan uang kalau generatornya gratis?',
-    a: 'Dari kode dinamis Premium. Kalau kamu perlu mengubah tujuan atau melihat analytics pindaian, fitur itu butuh infrastruktur sungguhan, dan itu yang kami kenakan biaya. Kode statis tetap gratis selamanya.',
+    q: 'Apakah kalian menyediakan kode QR dinamis?',
+    a: 'Tidak. QRMint saat ini hanya membuat kode QR statis. Isinya tidak dapat diedit setelah diunduh.',
   },
 ];
 
@@ -142,7 +141,6 @@ const jsonLd = [
       </div>
     </section>
 
-    <PremiumCta />
   </main>
   <Footer />
 </Layout>

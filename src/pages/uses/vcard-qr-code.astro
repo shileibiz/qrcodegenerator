@@ -1,0 +1,27 @@
+---
+import UsePage from '../../components/UsePage.astro';
+---
+
+<UsePage
+  title="vCard QR Code Generator for Contact Details | QRMint"
+  description="Create a static vCard QR code for your name, phone, email, company, and website. Generate and download PNG or SVG in your browser without an account."
+  heading="vCard QR Code Generator"
+  intro="Put your contact details in a QR code people can scan from a business card or badge. Enter the details below; the code is created in your browser."
+  slug="vcard-qr-code"
+  defaultTab="vcard"
+  steps={[
+    'Enter your first or last name, then add the phone number, email, company, and website you want to share.',
+    'Check the preview with your phone to make sure the contact fields appear as intended.',
+    'Download PNG or SVG and place the code on your card or badge.',
+  ]}
+  bullets={[
+    'The vCard contains only the fields you enter; a name is required to generate the code.',
+    'Contact details are encoded locally in your browser and are not uploaded to QRMint.',
+    'Anyone who scans the QR code can read its contact details, so include only information you want to share.',
+    'This is a static code. If your details change, generate and print a new one.',
+  ]}
+  faqs={[
+    { q: 'Can I include my company and website?', a: 'Yes. Both fields are optional in the vCard form above.' },
+    { q: 'Can I edit the contact after printing?', a: 'No. The details are encoded in the static QR image. Generate a new code if your contact details change.' },
+  ]}
+/>

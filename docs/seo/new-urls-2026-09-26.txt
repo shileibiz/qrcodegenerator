@@ -1,0 +1,4 @@
+https://qrcodegenerator.pages.dev/uses/vcard-qr-code/
+https://qrcodegenerator.pages.dev/uses/svg-qr-code/
+https://qrcodegenerator.pages.dev/uses/qr-code-no-sign-up/
+https://qrcodegenerator.pages.dev/uses/print-qr-code/
